@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>우리 반 플레이데이</title><meta name="description" content="우리 반 단합 대회, 8경기 진행과 점수 관리를 한 화면에서."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%235144d9'/%3E%3Cpath d='M12 8l13 8-13 8z' fill='%23dfff80'/%3E%3C/svg%3E"><style>500;600;700;800;900&display=swap');
+:root{--purple:#5144d9;--ink:#212136;--muted:#757587;--line:#e6e6ef;--lime:#dfff80}*{box-sizing:border-box}body{margin:0;background:#f5f6fa;color:var(--ink);font-family:'Noto Sans KR',system-ui,sans-serif;font-size:16px}button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink);padding:10px 15px;font-size:.875rem;font-weight:600;transition:background .15s,transform .15s}button:hover{background:#f0effa}button:active{transform:translateY(1px)}button:disabled{opacity:.4;cursor:default}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,textarea:focus-visible{outline:3px solid #a699ff;outline-offset:3px}.primary{background:var(--purple);border-color:var(--purple);color:white}.primary:hover{background:#4034bd}.dark{background:var(--ink);border-color:var(--ink);color:white}.dark:hover{background:#373751}header{min-height:88px;display:flex;align-items:center;justify-content:space-between;padding:18px 3.2%;background:white;border-bottom:1px solid var(--line);gap:18px}.brand{text-decoration:none;color:var(--ink);font-size:1.18rem;display:flex;align-items:center;gap:7px;white-space:nowrap}.logo{background:var(--purple);color:var(--lime);padding:8px 12px;border-radius:11px;margin-right:6px}.header-actions{display:flex;align-items:center;gap:10px}.save-state{font-size:.8rem;color:var(--muted);margin-right:12px}main{max-width:1650px;margin:auto;padding:36px 3.2% 15px}.intro{display:flex;align-items:center;justify-content:space-between;gap:25px;margin-bottom:32px}.eyebrow{font-size:.75rem;letter-spacing:1.6px;font-weight:800;color:var(--purple)}h1{font-size:2rem;letter-spacing:-1px;margin:7px 0}p{line-height:1.7} .intro p{color:var(--muted);margin:0;font-size:.9375rem}.progress-area{min-width:190px;font-size:.875rem}.progress{height:6px;border-radius:5px;background:#e4e2f4;margin-top:12px}.progress i{height:100%;display:block;background:var(--purple);border-radius:5px;transition:width .3s}.workspace{display:grid;grid-template-columns:245px minmax(360px,1fr) 270px;gap:22px;align-items:start}.schedule,.arena,.leaderboard{background:white;border:1px solid var(--line);border-radius:18px}.schedule{padding:23px 13px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.section-head h2,.section-head h3{font-size:1rem;margin:0}.section-head span{font-size:.75rem;color:var(--muted)}.schedule .section-head{padding:0 10px 22px}.schedule .section-head span{font-size:.65rem}nav{display:grid;gap:7px}.game-button{border:1px solid transparent;text-align:left;display:flex;align-items:center;gap:12px;padding:14px 10px;background:transparent}.game-button .num{border-radius:9px;background:#f2f2f7;color:var(--muted);height:34px;width:34px;display:grid;place-items:center;flex-shrink:0;font-size:.8rem}.game-button b{display:block;font-size:.91rem}.game-button small{display:block;color:var(--muted);font-size:.75rem;font-weight:400;margin-top:4px}.game-button.active{background:#eeecff;color:var(--purple)}.game-button.active .num{background:var(--purple);color:white}.game-button.finished:not(.active) .num{background:#e9f5d7;color:#466b16}.schedule-note{font-size:.8rem;line-height:1.8;color:var(--muted);border-top:1px solid var(--line);padding:20px 10px 0;margin-top:20px}.arena{overflow:hidden;padding:25px}.game-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.pill{font-size:.7rem;font-weight:800;letter-spacing:1px;color:var(--purple);background:#eeecff;border-radius:5px;padding:5px 8px}.game-head h2{font-size:1.7rem;margin:10px 0 5px;letter-spacing:-.7px}.game-head p{color:var(--muted);font-size:.85rem;margin:0}.complete{font-size:.8rem;white-space:nowrap}.complete.is-done{background:#e9f5d7;color:#466b16}.stage{background:#5144d9;border-radius:13px;min-height:252px;text-align:center;color:white;padding:27px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}.stage-label{font-size:.78rem;font-weight:600;letter-spacing:1px;color:#d8d3ff}#question{font-weight:800;font-size:2.8rem;line-height:1.5;letter-spacing:.04em;margin:16px 0;word-break:keep-all;overflow-wrap:anywhere}#question.long{font-size:1.75rem;letter-spacing:-.02em}#answer{color:var(--lime);font-size:1.5rem;font-weight:700;min-height:38px}#answer.hidden{visibility:hidden}.quiz-count{font-size:.75rem;color:#d8d3ff;margin-top:16px}.quiz-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:15px 0}.text-btn{border:0;background:transparent;color:var(--muted);font-size:.8rem}.timer-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:21px 0;border-bottom:1px solid var(--line)}.timer{font-size:2.3rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-1px}.timer.expired{color:#c13b39}.timer-buttons{display:flex;gap:6px}.timer-setting{margin-left:auto;font-size:.75rem;color:var(--muted);display:grid;gap:4px}select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:.875rem;background:white}.rules{padding:21px 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:700;font-size:.9rem}summary span{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:10px}.rules ol{padding-left:22px;font-size:.875rem;color:#555568;line-height:1.9;margin-bottom:10px}.rules p{margin:0;font-size:.8rem;color:var(--muted)}.round-scores{margin-top:22px}#scoreInputs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.score-item{display:flex;gap:6px;align-items:center;background:#f7f7fb;border-radius:9px;padding:10px;min-width:0}.score-item label{font-size:.85rem;font-weight:700;flex:1;overflow-wrap:anywhere;min-width:0}.score-item input{width:55px;border:1px solid var(--line);border-radius:6px;background:white;padding:6px 2px;text-align:center;font-size:.9rem}.score-item button{padding:5px 9px;font-size:1rem}.leaderboard{padding:23px 20px}.leaderboard .live{font-size:.65rem;letter-spacing:.7px}.board-note{font-size:.8rem;color:var(--muted);margin:9px 0 25px}.rank{display:flex;align-items:center;gap:11px;padding:16px 4px;border-bottom:1px solid #f0f0f5}.rank .position{font-size:1rem;color:var(--muted);min-width:18px}.rank .team-color{width:8px;height:28px;border-radius:5px;background:var(--team)}.rank .team-name{font-size:.9rem;font-weight:700;overflow-wrap:anywhere;flex:1;min-width:0}.rank strong{font-size:1.35rem;white-space:nowrap}.rank strong small{font-size:.7rem;font-weight:400;margin-left:4px;color:var(--muted)}.rank.first{background:#f2f0ff;border-radius:10px;border:0;padding:17px 10px}.rank.first .position{color:var(--purple);font-weight:800}.next-up{background:#f6f7fa;border-radius:10px;padding:18px;margin:26px 0 13px}.next-up .eyebrow{font-size:.65rem;color:var(--muted)}.next-up h3{font-size:1rem;margin:8px 0 5px}.next-up p{font-size:.75rem;color:var(--muted);margin:0}.wide{width:100%}.local-note{font-size:.75rem;color:var(--muted);text-align:center;line-height:1.8;margin:20px 0 0}footer{display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:25px}dialog{border:1px solid var(--line);border-radius:18px;padding:26px;width:min(560px,92vw);color:var(--ink);max-height:90vh}dialog::backdrop{background:#1b193f88;backdrop-filter:blur(3px)}.dialog-head{display:flex;align-items:center;justify-content:space-between}.dialog-head h2{font-size:1.25rem;margin:0}dialog p{font-size:.875rem;color:var(--muted)}.team-field{display:flex;gap:10px;margin:10px 0}input,textarea{border:1px solid var(--line);border-radius:8px;padding:10px;min-width:0}.team-field input{flex:1;width:100%}.dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:24px}.hint{font-size:.75rem}textarea{width:100%;line-height:1.8;resize:vertical}#editError{color:#bd3535}#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;padding:12px 22px;border-radius:10px;font-size:.875rem;z-index:10;display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}body.present header .brand,body.present .save-state,body.present #settingsBtn,body.present .intro,body.present .schedule,body.present .leaderboard,body.present .rules,body.present .round-scores,body.present footer,body.present #editQuiz,body.present .complete{display:none}body.present header{justify-content:flex-end;padding:8px 24px;min-height:0}body.present main{max-width:none;padding:16px 4%}body.present .workspace{display:block}body.present .arena{padding:20px;border:0}body.present .stage{min-height:52vh}body.present #question{font-size:clamp(2.6rem,6vw,6rem)}body.present #question.long{font-size:clamp(2rem,4vw,4rem)}body.present #answer{font-size:2.5rem}body.present .timer-row{justify-content:center;border:0}body.present .timer-setting{margin-left:20px}body.present .game-head{margin-bottom:14px}body.present .game-head h2{font-size:1.3rem;margin:6px 0}body.present .timer{font-size:3rem}@media(min-width:1500px){.workspace{grid-template-columns:265px minmax(360px,1fr) 300px}.stage{min-height:285px}}@media(max-width:1150px){.workspace{grid-template-columns:210px minmax(320px,1fr)}.leaderboard{grid-column:1/-1}#rankings{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.next-up{margin-top:18px}.leaderboard .next-up,.leaderboard #nextRound,.leaderboard .local-note{display:none}.arena{padding:20px}.header-actions .save-state{display:none}}@media(max-width:720px){header{flex-wrap:wrap;padding:16px 5%}.brand{font-size:1rem}.header-actions{width:100%;justify-content:flex-end}main{padding:24px 4%}.intro{align-items:start}.intro h1{font-size:1.5rem}.intro .eyebrow{font-size:.6rem}.intro p{font-size:.8rem}.progress-area{min-width:90px;font-size:.7rem}.workspace{display:flex;flex-direction:column;gap:15px}.schedule,.arena,.leaderboard{width:100%}.schedule{padding:14px}.schedule .section-head{padding-bottom:10px}.schedule-note{display:none}nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.game-button{padding:8px 3px;display:block;text-align:center}.game-button .num{margin:0 auto 5px;width:25px;height:25px;font-size:.7rem}.game-button b{font-size:.72rem}.game-button small{display:none}.arena{padding:18px}.game-head h2{font-size:1.4rem}#question{font-size:2.1rem}#question.long{font-size:1.4rem}.stage{min-height:230px;padding:24px 16px}.timer-row{gap:10px}.timer{font-size:2rem}.timer-setting{margin-left:0}#rankings{grid-template-columns:1fr 1fr}.rank{padding:12px 8px;gap:8px}.rank strong{font-size:1.1rem}.round-scores .section-head{align-items:start}.round-scores .section-head span{font-size:.65rem}#scoreInputs{grid-template-columns:1fr}.rules summary span{display:block;margin:7px 0 0 15px}footer{gap:10px;align-items:start}.progress-area{max-width:100px}.save-state{display:none}}
+
+[hidden]{display:none!important}.collection-bar{background:#f6f5ff;border:1px solid #e4e0ff;border-radius:12px;padding:16px;margin-bottom:16px}.collection-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.collection-heading label{font-size:.9rem;font-weight:800}.collection-heading span{font-size:.75rem;color:var(--purple)}#packSelect{width:100%;padding:10px;background:white;font-weight:600}.collection-bar p{font-size:.75rem;color:var(--muted);margin:8px 0}.collection-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.collection-controls label{font-size:.8rem;color:var(--muted)}#questionJump{width:66px;padding:6px}.collection-controls button{padding:7px 10px}.mafia-panel{background:#f6f5ff;border:1px solid #e4e0ff;border-radius:12px;padding:16px;margin-bottom:16px}.mafia-panel .section-head label{font-size:.8rem}.mafia-panel p{font-size:.8rem;color:#626074}.mafia-panel strong{font-size:.8rem;color:var(--purple);display:block;margin-top:12px}#mafiaCount{width:65px;padding:6px}.mafia-phases{display:flex;flex-wrap:wrap;gap:6px}body.present .collection-bar,body.present .mafia-panel{display:none}.quiz-count{max-width:100%;overflow-wrap:anywhere}body.present #question.long{font-size:clamp(1.5rem,3.5vw,3.4rem)}body.present #answer{font-size:clamp(1.3rem,3vw,2.5rem)}@media(max-width:420px){.collection-heading{align-items:flex-start;flex-direction:column}}
+body.present .mafia-panel{display:block;background:transparent;border:0;padding:0}body.present .mafia-panel>:not(.mafia-phases){display:none}body.present .mafia-phases{justify-content:center;margin-bottom:12px}
+
+.teacher-row{display:grid;grid-template-columns:42px minmax(0,1fr) 100px;align-items:center;gap:8px;margin:8px 0}.teacher-row span{font-size:.8rem;color:var(--muted)}.teacher-row input{width:100%}.teacher-row select{padding:10px 6px}#teacherRows{max-height:42vh;overflow:auto;margin-top:14px;padding:3px}#teacherTally{font-size:.9rem;color:var(--purple)}#teacherError{color:#bd3535}.teacher-notice{padding:12px;background:#f3f0ff;border-radius:8px}body.present #teacherRoles{display:none!important}
+
+[hidden]{display:none!important}.view-tabs{display:flex;gap:10px;margin:0 0 22px}.view-tabs button{font-size:18px;padding:13px 28px}.view-tabs [aria-selected="true"]{background:#5144d9;color:white}#studentRanks{padding:28px;background:white;border-radius:20px}#publicRankings{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0}.public-rank{border:1px solid #ddd;border-radius:16px;padding:22px;display:flex;align-items:center;gap:16px}.public-rank.winner{background:#f2efff;border-color:#7764e8}.public-rank b{flex:1}.public-rank strong{font-size:32px}.public-rank small{font-size:14px;margin-left:4px}.rank-table-wrap{overflow-x:auto}#studentRanks table{width:100%;border-collapse:collapse}#studentRanks th,#studentRanks td{padding:14px;border-bottom:1px solid #eee;text-align:center}#studentRanks caption{text-align:left;font-weight:700;margin-bottom:12px}#teacherAuth label{display:block;margin:16px 0}#teacherAuth input{display:block;width:100%;margin-top:8px;padding:12px}#authError{color:#b42318}#accessStatus{font-size:12px;color:#625c76}.student-mode #roundScores,.student-mode #resetAll{display:none}.present .view-tabs{display:flex}
+body.loading main{pointer-events:none;opacity:.4}#saveState{display:inline!important} .save-state{font-size:14px}</style></head>
+<body class="loading"><header><a class="brand" href="./"><span class="logo">▶</span> 우리 반 <strong>플레이데이</strong></a><div class="header-actions"><span id="accessStatus">학생 보기</span><button id="teacherAccess">교사 관리</button><span class="save-state" id="saveState">서버 연결 중</span><button id="settingsBtn">팀 설정</button><button id="screenBtn" class="dark">큰 화면 보기 ⛶</button></div><button id="shareLink">학생 링크 복사</button></header>
+<main><div class="intro"><div><div class="eyebrow">CLASS TOGETHER, PLAY TOGETHER</div><h1>오늘의 주인공은, 우리 반.</h1><p>함께 웃고, 함께 뛰는 8번의 경기</p></div><div class="progress-area"><strong id="progressLabel">0 / 8 경기 완료</strong><div class="progress"><i id="progressBar"></i></div></div></div>
+<nav class="view-tabs" role="tablist" aria-label="화면 선택"><button id="scheduleTab" role="tab" aria-selected="true" aria-controls="gameView">경기 순서</button><button id="rankTab" role="tab" aria-selected="false" aria-controls="studentRanks">순위</button></nav>
+<section id="studentRanks" role="tabpanel" aria-labelledby="rankTab" hidden><div class="section-head"><div><h2>우리 반 종합 순위</h2><p>2~8경기 합산 점수 / 동점은 공동 순위</p></div><span>학생 공개 화면</span></div><div id="publicRankings"></div><div class="rank-table-wrap"><table><caption>팀별 경기 점수</caption><thead id="rankHead"></thead><tbody id="rankBody"></tbody></table></div><p>서버의 최신 점수입니다. 교사가 점수를 입력하면 반영됩니다.</p></section>
+<div class="workspace" id="gameView" role="tabpanel" aria-labelledby="scheduleTab"><aside class="schedule"><div class="section-head"><h2>경기 순서</h2><span>ROUND 01—08</span></div><nav id="games" aria-label="경기 선택"></nav><div class="schedule-note">2~8경기 점수를 합산해요.<br>마피아는 반 전체 참여 경기예요.</div></aside>
+<section class="arena"><div class="game-head"><div><span class="pill" id="roundLabel"></span><h2 id="gameTitle"></h2><p id="gameMeta"></p></div><button id="doneBtn" class="complete"></button></div>
+<section id="collectionBar" class="collection-bar" hidden><div class="collection-heading"><label for="packSelect">문제 모음집</label><span>총 40개   1,600문제</span></div><select id="packSelect" aria-label="문제 모음집 선택"></select><p id="packSummary"></p><div class="collection-controls"><label>문제 번호 <input id="questionJump" type="number" min="1" value="1" aria-label="이동할 문제 번호"></label><button id="shufflePack">문제 섞기</button><button id="restartPack">처음부터</button><button id="restorePack" class="text-btn">원본 복원</button></div></section>
+<section id="mafiaPanel" class="mafia-panel" hidden><div class="section-head"><h3>반 전체 참여</h3><label>학생 <input id="mafiaCount" type="number" min="8" max="60" value="30" aria-label="마피아 참여 학생 수"> 명</label></div><p id="mafiaRoles"></p><button id="teacherRoleBtn" class="primary">교사 역할 배정</button><p>교사가 학생별 역할을 지정하고 각자에게 비공개로 알려 주세요. 역할 배정 화면은 학생에게 보여 주지 않습니다. 아래 버튼은 진행 안내 화면을 바꾸며 타이머는 직접 시작합니다.</p><div class="mafia-phases" aria-label="마피아 진행 단계"><button data-mafia-phase="ready">역할 확인</button><button data-mafia-phase="night">밤</button><button data-mafia-phase="day">낮 토론</button><button data-mafia-phase="vote">투표</button></div><strong id="mafiaScoreNote"></strong></section>
+<div id="stage" class="stage"><div id="stageLabel" class="stage-label"></div><div id="question"></div><div id="answer" aria-live="polite"></div><div id="quizCount" class="quiz-count"></div></div>
+<div class="quiz-actions" id="quizActions"><button id="prevQuestion">이전 문제</button><button class="primary" id="revealBtn">정답 공개</button><button id="nextQuestion">다음 문제</button><button id="editQuiz" class="text-btn">문제 편집</button></div>
+<div class="timer-row"><div class="timer" id="timer" role="timer" aria-label="남은 시간">03:00</div><div class="timer-buttons"><button id="timerToggle" class="dark">타이머 시작</button><button id="timerReset">초기화</button></div><label class="timer-setting">제한 시간 <select id="duration"><option value="30">30초</option><option value="60">1분</option><option value="120">2분</option><option value="180">3분</option><option value="300">5분</option><option value="600">10분</option></select></label></div><div id="timeAlert" class="sr-only" aria-live="assertive"></div>
+<details class="rules" open><summary>진행 방법 <span>기본 운영안</span></summary><ol id="rules"></ol><p id="supplies"></p></details>
+<section class="round-scores" id="roundScores"><div class="section-head"><h3>이번 경기 점수</h3><span>합의한 배점에 맞춰 입력</span></div><div id="scoreInputs"></div></section></section>
+<aside class="leaderboard"><div class="section-head"><h2>종합 순위</h2><span class="live">SCOREBOARD</span></div><p class="board-note">마지막까지, 함께 즐기기!</p><div id="rankings"></div><div class="next-up"><div class="eyebrow">UP NEXT</div><h3 id="nextGame"></h3><p id="nextMeta"></p></div><button id="nextRound" class="primary wide">다음 경기로</button><p class="local-note">변경 사항은 서버에 저장됩니다.<br>학생 화면에 자동 반영됩니다.</p></aside></div>
+<footer><span>승부보다 소중한 건, 함께한 시간.</span><button id="resetAll" class="text-btn">대회 기록 초기화</button></footer></main>
+
+<dialog id="settings"><form id="settingsForm"><div class="dialog-head"><h2>우리 반 팀 설정</h2><button type="button" data-close="settings" aria-label="닫기">✕</button></div><p>2~8개 팀을 만들 수 있어요. 팀 이름을 정해 보세요.</p><div id="teamFields"></div><button type="button" id="addTeam">+ 팀 추가</button><p class="hint">팀을 삭제하면 해당 팀의 모든 경기 점수도 삭제됩니다.</p><div class="dialog-actions"><button type="button" data-close="settings">취소</button><button class="primary" type="submit">저장</button></div></form></dialog>
+<dialog id="quizEditor"><form id="quizForm"><div class="dialog-head"><h2>퀴즈 문제 편집</h2><button type="button" data-close="quizEditor" aria-label="닫기">✕</button></div><p>한 줄에 <strong>문제 | 정답</strong> 형식으로 입력하세요.<br>선택한 모음집에만 적용되며 원본 복원이 가능합니다.<br>인물 퀴즈는 사진 대신 인물의 특징을 읽고 맞히는 방식입니다.</p><textarea id="quizText" rows="12" aria-label="문제와 정답 목록" required></textarea><p id="editError" role="alert"></p><div class="dialog-actions"><button type="button" data-close="quizEditor">취소</button><button class="primary" type="submit">문제 저장</button></div></form></dialog>
+<dialog id="teacherRoles"><form id="teacherForm"><div class="dialog-head"><h2>교사 역할 배정</h2><button type="button" data-close="teacherRoles" aria-label="닫기">✕</button></div><p class="teacher-notice">교사 개인 화면에서 설정하세요. 화면을 공유 중이면 이 명단도 보입니다. 큰 화면 모드에서는 명단이 닫힙니다.</p><p>학생 이름이나 번호를 입력하고 역할을 직접 선택하세요. 경찰 의사는 보통 각 1명입니다. 배정 후 종이 쪽지 등으로 개별 전달하세요.</p><strong id="teacherTally"></strong><div id="teacherRows"></div><p id="teacherError" role="alert"></p><div class="dialog-actions"><button type="button" data-close="teacherRoles">취소</button><button type="submit" class="primary">역할 배정 저장</button></div></form></dialog><div id="toast" role="status"></div><script>'use strict';
+// Authored question collections. Hangul initials are derived from the answers.
+const QUIZ_PACKS={initial:[],person:[],speed:[],whisper:[]};
+function initials(text){return [...text].map(c=>{const n=c.charCodeAt(0)-0xac00;return n>=0&&n<11172?'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ'[Math.floor(n/588)]:c}).join('')}
+function addWords(type,id,title,topic,text){const words=text.split(',').map(s=>s.trim()).filter(Boolean);QUIZ_PACKS[type].push({id,title,questions:words.map(w=>[type==='initial'?initials(w):w,w])})}
+function addPeople(id,title,text){QUIZ_PACKS.person.push({id,title,questions:text.trim().split('\n').map(line=>line.split('|').map(x=>x.trim()))})}
+function addPhrases(id,title,text){QUIZ_PACKS.whisper.push({id,title,questions:text.trim().split('\n').map(s=>[s.trim(),s.trim()])})}
+addWords('initial','i01','01   맛있는 한 끼','음식',`
+떡볶이,김밥,비빔밥,불고기,삼겹살,갈비찜,된장찌개,김치찌개,순두부찌개,부대찌개,
+미역국,콩나물국,설렁탕,삼계탕,갈비탕,육개장,감자탕,냉면,칼국수,잔치국수,
+짜장면,짬뽕,탕수육,볶음밥,오므라이스,돈가스,카레라이스,햄버거,샌드위치,스파게티,
+피자,초밥,우동,라면,만두,잡채,김치전,해물파전,떡국,순대`);
+addWords('initial','i02','02   과일과 달콤한 간식','과일 간식',`
+사과,배,포도,딸기,수박,참외,복숭아,자두,살구,감,
+귤,오렌지,레몬,자몽,바나나,파인애플,망고,키위,체리,블루베리,
+라즈베리,코코넛,석류,무화과,멜론,아보카도,대추,매실,리치,용과,
+초콜릿,마카롱,도넛,크루아상,붕어빵,호떡,팥빙수,아이스크림,솜사탕,푸딩`);
+addWords('initial','i03','03   동물 친구들','동물',`
+강아지,고양이,토끼,햄스터,다람쥐,고슴도치,기니피그,친칠라,여우,늑대,
+호랑이,사자,표범,치타,코끼리,기린,얼룩말,코뿔소,하마,캥거루,
+코알라,판다,수달,비버,너구리,오소리,두더지,박쥐,원숭이,고릴라,
+침팬지,오랑우탄,나무늘보,미어캣,낙타,알파카,라마,순록,멧돼지,북극곰`);
+addWords('initial','i04','04   바다와 하늘의 생명','동물 곤충',`
+돌고래,범고래,흰긴수염고래,상어,가오리,문어,오징어,낙지,해파리,불가사리,
+해마,복어,고등어,연어,참치,멸치,정어리,장어,새우,꽃게,
+바닷가재,소라,전복,가리비,펭귄,독수리,참새,비둘기,까치,까마귀,
+앵무새,부엉이,올빼미,타조,공작,벌새,딱따구리,잠자리,무당벌레,사슴벌레`);
+addWords('initial','i05','05   우리 학교','학교생활',`
+교실,칠판,분필,교탁,책상,의자,사물함,시간표,알림장,교과서,
+공책,연필,지우개,샤프,볼펜,형광펜,필통,책가방,색연필,크레파스,
+물감,팔레트,도화지,스케치북,가위,자,각도기,컴퍼스,스테이플러,클립,
+운동장,체육관,도서관,과학실,음악실,미술실,급식실,보건실,방송실,교무실`);
+addWords('initial','i06','06   집 안의 물건','생활용품',`
+냉장고,세탁기,청소기,전자레인지,에어컨,선풍기,가습기,공기청정기,텔레비전,전기밥솥,
+식기세척기,토스터,믹서기,드라이어,다리미,전기주전자,커피머신,정수기,침대,소파,
+옷장,서랍장,화장대,책장,거울,커튼,이불,베개,매트리스,옷걸이,
+수건,칫솔,치약,비누,샴푸,빗,휴지,쓰레기통,빨래바구니,우산`);
+addWords('initial','i07','07   스포츠와 취미','운동 취미',`
+축구,농구,야구,배구,탁구,배드민턴,테니스,골프,볼링,당구,
+수영,다이빙,서핑,스키,스노보드,스케이트,피겨스케이팅,아이스하키,컬링,봅슬레이,
+태권도,유도,검도,펜싱,양궁,사격,레슬링,복싱,역도,체조,
+마라톤,허들,높이뛰기,멀리뛰기,장대높이뛰기,클라이밍,줄넘기,등산,낚시,캠핑`);
+addWords('initial','i08','08   여행을 떠나요','이동수단 장소',`
+자동차,버스,택시,지하철,기차,비행기,헬리콥터,자전거,오토바이,전동킥보드,
+유람선,여객선,잠수함,요트,케이블카,모노레일,열기구,우주선,소방차,구급차,
+경찰차,굴착기,불도저,트랙터,기중기,공항,기차역,정류장,주차장,휴게소,
+놀이공원,수족관,동물원,박물관,미술관,식물원,천문대,전망대,해수욕장,스키장`);
+addWords('initial','i09','09   자연과 지구','자연 날씨',`
+무지개,번개,천둥,소나기,이슬비,장마,태풍,눈보라,서리,안개,
+구름,바람,이슬,고드름,우박,폭염,한파,가뭄,홍수,지진,
+화산,용암,빙하,사막,초원,밀림,숲,계곡,폭포,동굴,
+호수,강,바다,갯벌,산호초,해변,절벽,반도,섬,지평선`);
+addWords('initial','i10','10   과학과 음악 도전','과학 음악',`
+태양,수성,금성,지구,화성,목성,토성,천왕성,해왕성,혜성,
+은하수,블랙홀,별자리,인공위성,우주정거장,망원경,현미경,온도계,나침반,자석,
+피아노,바이올린,비올라,첼로,콘트라베이스,플루트,클라리넷,오보에,바순,색소폰,
+트럼펫,트롬본,호른,튜바,하프,기타,우쿨렐레,아코디언,실로폰,마림바`);
+addWords('speed','s01','01   몸으로 설명하기','',`
+양치질,세수하기,머리 감기,손 씻기,기지개 켜기,하품하기,재채기하기,코 풀기,딸꾹질,눈 비비기,
+머리 묶기,신발 끈 묶기,단추 잠그기,지퍼 올리기,옷 개기,이불 개기,양말 신기,장갑 끼기,모자 쓰기,안경 닦기,
+계단 오르기,문 두드리기,초인종 누르기,창문 열기,불 끄기,전화 받기,셀카 찍기,박수 치기,손 흔들기,고개 끄덕이기,
+귀 기울이기,윙크하기,손가락 걸기,하이파이브,어깨 주무르기,까치발 들기,뒷걸음질,쪼그려 앉기,제자리 뛰기,줄 서기`);
+addWords('speed','s02','02   학교에서 생긴 일','',`
+받아쓰기,구구단,독후감,일기 쓰기,숙제 검사,발표하기,손들기,전학,입학식,졸업식,
+체육대회,학예회,수학여행,현장체험학습,소풍,반장 선거,학급회의,자리 바꾸기,청소 당번,급식 당번,
+방학식,개학식,종례,조회,지각,조퇴,결석,출석 부르기,시험공부,수행평가,
+모둠 활동,칠판 지우기,분리수거,책 빌리기,독서 시간,악기 연주,과학 실험,종이접기,줄 맞추기,상장 받기`);
+addWords('speed','s03','03   직업 설명왕','',`
+소방관,경찰관,의사,간호사,약사,수의사,교사,요리사,제빵사,미용사,
+배우,가수,마술사,개그맨,아나운서,기자,사진작가,화가,소설가,시인,
+만화가,성우,작곡가,지휘자,무용수,피아니스트,프로게이머,운동선수,심판,스포츠 해설가,
+조종사,승무원,기관사,버스 기사,택배 기사,농부,어부,목수,건축가,우주비행사`);
+addWords('speed','s04','04   놀고 또 놀고','',`
+숨바꼭질,술래잡기,얼음땡,무궁화꽃이 피었습니다,공기놀이,딱지치기,구슬치기,비석치기,제기차기,팽이치기,
+윷놀이,연날리기,널뛰기,그네 타기,시소 타기,미끄럼틀 타기,방방 뛰기,물총 싸움,눈싸움,눈사람 만들기,
+보물찾기,이어달리기,줄다리기,풍선 터뜨리기,풍선 불기,비눗방울 불기,모래성 쌓기,물수제비,돌탑 쌓기,낙엽 밟기,
+퍼즐 맞추기,레고 조립,보드게임,체스,바둑,장기,끝말잇기,스무고개,가위바위보,손병호 게임`);
+addWords('speed','s05','05   주방의 하루','',`
+달걀 깨기,달걀말이,주먹밥 만들기,쿠키 굽기,반죽하기,생크림 짜기,과일 깎기,채소 썰기,양파 까기,감자 깎기,
+김장,쌀 씻기,밥 짓기,국 끓이기,라면 끓이기,고기 굽기,소금 뿌리기,후추 갈기,참기름 넣기,간 보기,
+상 차리기,설거지,행주 짜기,도시락 싸기,배달 주문,메뉴 고르기,장보기,시식,포장하기,설탕 뽑기,
+숟가락,젓가락,국자,뒤집개,도마,프라이팬,냄비,채반,밀대,계량컵`);
+addWords('speed','s06','06   여행과 나들이','',`
+여권,탑승권,캐리어,목베개,안전벨트,구명조끼,수하물,기내식,입국 심사,보안 검색,
+면세점,환전,시차,지도 보기,길 묻기,예약,체크인,체크아웃,룸서비스,기념품,
+텐트 치기,불멍,바비큐,해돋이,노을 보기,별 구경,갯벌 체험,스노클링,스쿠버다이빙,래프팅,
+번지점프,패러글라이딩,짚라인,회전목마,관람차,롤러코스터,범퍼카,바이킹,퍼레이드,불꽃놀이`);
+addWords('speed','s07','07   말로 풀어보는 속담','',`
+가는 말이 고와야 오는 말이 곱다,고래 싸움에 새우 등 터진다,가는 날이 장날,그림의 떡,금강산도 식후경,낮말은 새가 듣고 밤말은 쥐가 듣는다,누워서 떡 먹기,등잔 밑이 어둡다,돌다리도 두들겨 보고 건너라,되로 주고 말로 받는다,
+땅 짚고 헤엄치기,뛰는 놈 위에 나는 놈 있다,말 한마디에 천 냥 빚도 갚는다,목마른 사람이 우물 판다,믿는 도끼에 발등 찍힌다,바늘 도둑이 소도둑 된다,배보다 배꼽이 더 크다,백지장도 맞들면 낫다,벼는 익을수록 고개를 숙인다,불난 집에 부채질한다,
+빈 수레가 요란하다,사공이 많으면 배가 산으로 간다,산 넘어 산,서당 개 삼 년에 풍월을 읊는다,세 살 버릇 여든까지 간다,소 잃고 외양간 고친다,시작이 반이다,식은 죽 먹기,아는 길도 물어 가라,열 번 찍어 안 넘어가는 나무 없다,
+우물 안 개구리,원숭이도 나무에서 떨어진다,원수는 외나무다리에서 만난다,작은 고추가 맵다,지렁이도 밟으면 꿈틀한다,천 리 길도 한 걸음부터,티끌 모아 태산,하늘의 별 따기,하룻강아지 범 무서운 줄 모른다,호랑이도 제 말 하면 온다`);
+addWords('speed','s08','08   스포츠 현장 중계','',`
+골키퍼,페널티킥,프리킥,오프사이드,코너킥,헤딩,드리블,슬램덩크,자유투,리바운드,
+홈런,삼진,도루,번트,더블플레이,포수,투수,타자,치어리더,연장전,
+승부차기,결승선,출발 신호,바통 터치,금메달,시상대,응원가,경기장,전광판,하이라이트,
+워밍업,스트레칭,팔굽혀펴기,윗몸일으키기,턱걸이,물구나무서기,앞구르기,뒤구르기,옆돌기,외발서기`);
+addWords('speed','s09','09   디지털과 일상','',`
+비밀번호,지문 인식,얼굴 인식,와이파이,블루투스,비행기 모드,진동 모드,배터리 충전,화면 캡처,영상 통화,
+문자 메시지,이모티콘,단체 채팅,알람 설정,검색창,즐겨찾기,다운로드,업로드,복사하기,붙여넣기,
+삭제하기,되돌리기,인쇄하기,마우스 클릭,키보드 타자,음성 녹음,이어폰 연결,사진 보정,동영상 편집,게임 저장,
+자동문,회전문,에스컬레이터,엘리베이터,무인 계산대,자판기,교통카드,신호등,횡단보도,점자블록`);
+addWords('speed','s10','10   감정과 상상력','',`
+깜짝 놀람,긴장,설렘,뿌듯함,서운함,억울함,부끄러움,질투,호기심,안도감,
+감동,감사,미안함,기대,후회,인내,용기,자신감,우정,배려,
+투명인간,시간 여행,순간 이동,하늘 날기,마음 읽기,거인,소인,마법 지팡이,도깨비 방망이,보물 상자,
+비밀 기지,우주 탐험,외계인,타임머신,로봇 친구,꿈속 여행,바닷속 왕국,공룡 부활,날아다니는 자동차,무인도 탈출`);
+addPeople('p01','01   한국사 인물',`
+훈민정음을 창제한 조선의 왕 | 세종대왕
+한산도 대첩과 명량 해전으로 유명한 조선의 장군 | 이순신
+아우내 장터 만세 운동에 참여한 독립운동가 | 유관순
+하얼빈에서 이토 히로부미를 처단한 독립운동가 | 안중근
+상하이 훙커우 공원 의거를 일으킨 독립운동가 | 윤봉길
+백범일지를 쓴 독립운동가 | 김구
+호가 도산이며 흥사단을 창립한 독립운동가 | 안창호
+청산리 전투를 이끈 북로군정서의 독립군 지휘관 | 김좌진
+봉오동 전투의 승리로 유명한 독립군 지휘관 | 홍범도
+조선상고사를 쓴 역사학자이자 독립운동가 | 신채호
+경복궁을 중건하고 통상 수교 거부 정책을 펼친 고종의 아버지 | 흥선대원군
+동학 농민 운동을 이끌었으며 녹두장군으로 불린 인물 | 전봉준
+조선을 세운 왕으로 태조라고 불리는 인물 | 이성계
+고려를 세운 왕으로 태조라고 불리는 인물 | 왕건
+고구려를 세웠으며 동명성왕이라고도 불리는 인물 | 주몽
+백제를 세웠다고 전해지는 왕 | 온조
+신라를 세웠으며 알에서 태어났다는 이야기가 전해지는 인물 | 박혁거세
+고조선을 세웠다고 전해지는 건국 신화의 주인공 | 단군왕검
+고구려의 영토를 넓혔으며 이름을 딴 비석이 남아 있는 대왕 | 광개토대왕
+고구려의 수도를 국내성에서 평양으로 옮긴 왕 | 장수왕
+신라의 여성 왕이며 첨성대가 세워진 시대의 왕 | 선덕여왕
+신라의 삼국 통일 과정에서 활약한 장군이며 김춘추를 도운 인물 | 김유신
+외교를 통해 고구려의 옛 땅인 강동 6주를 확보한 고려 인물 | 서희
+거란군을 상대로 귀주대첩을 이끈 고려 장군 | 강감찬
+수나라 군대를 상대로 살수대첩을 이끈 고구려 장군 | 을지문덕
+고려 말 화약과 화포 제작에 힘쓴 인물 | 최무선
+자격루 제작에 참여한 조선 세종 때의 과학 기술자 | 장영실
+대동여지도를 만든 조선의 지리학자 | 김정호
+목민심서를 쓴 조선 후기 실학자로 호는 다산 | 정약용
+열하일기를 쓴 조선 후기 실학자로 호는 연암 | 박지원
+북학의를 쓴 조선 후기 실학자로 호는 초정 | 박제가
+홍길동전의 작가로 알려진 조선의 문인 | 허균
+동의보감 편찬을 이끈 조선의 의관 | 허준
+성리학자로 호는 퇴계이며 천 원권 지폐에 등장하는 인물 | 이황
+성리학자로 호는 율곡이며 오천 원권 지폐에 등장하는 인물 | 이이
+율곡 이이의 어머니이며 오만 원권 지폐에 등장하는 예술가 | 신사임당
+씨름과 서당 그림으로 유명한 조선의 풍속화가 | 김홍도
+미인도로 유명하며 호가 혜원인 조선의 화가 | 신윤복
+추사체로 유명하며 세한도를 그린 서예가 | 김정희
+탕평책을 펼치고 수원 화성을 세운 조선의 왕 | 정조
+`);
+addPeople('p02','02   세계사의 이름들',`
+마케도니아의 왕으로 페르시아를 정복한 고대의 정복자 | 알렉산드로스 대왕
+이집트의 여왕으로 율리우스 카이사르와 안토니우스와 관련된 인물 | 클레오파트라
+루비콘강을 건넌 로마의 장군이자 정치가 | 율리우스 카이사르
+몽골 제국을 세운 지도자 | 칭기즈 칸
+중국을 처음 통일하고 황제라는 칭호를 사용한 진나라 군주 | 진시황
+당나라 시대 중국의 여성 황제로 알려진 인물 | 측천무후
+프랑스 황제로 즉위했으며 워털루 전투에서 패한 인물 | 나폴레옹 보나파르트
+백년전쟁 때 프랑스군을 이끈 오를레앙의 소녀 | 잔 다르크
+미국 독립 전쟁을 이끌고 초대 대통령이 된 인물 | 조지 워싱턴
+미국 남북전쟁 시기의 대통령으로 노예 해방 선언을 발표한 인물 | 에이브러햄 링컨
+인도의 독립을 위해 비폭력 저항 운동을 이끈 인물 | 마하트마 간디
+남아프리카 공화국의 인종 차별 철폐 운동을 이끌고 대통령이 된 인물 | 넬슨 만델라
+나에게는 꿈이 있습니다라는 연설로 유명한 미국의 인권 운동가 | 마틴 루서 킹 주니어
+미국 버스에서 백인에게 자리를 양보하라는 요구를 거부한 인권 운동가 | 로자 파크스
+크림 전쟁에서 부상병을 돌보았으며 등불을 든 여인으로 불린 간호사 | 플로렌스 나이팅게일
+시각과 청각의 장애를 극복하고 작가와 사회운동가가 된 인물 | 헬렌 켈러
+헬렌 켈러의 스승으로 손에 글자를 써서 언어를 가르친 인물 | 앤 설리번
+나치의 박해를 피해 숨어 지내며 일기를 쓴 유대인 소녀 | 안네 프랑크
+인도 콜카타에서 가난한 이들을 돌본 수녀로 노벨 평화상을 받은 인물 | 마더 테레사
+파키스탄 출신 여성 교육 운동가로 2014년 노벨 평화상을 받은 인물 | 말랄라 유사프자이
+러시아를 서유럽식으로 개혁하고 상트페테르부르크를 건설한 황제 | 표트르 대제
+러시아의 여성 군주로 예카테리나 대제라고도 불리는 인물 | 예카테리나 2세
+독일 통일을 이끌었으며 철혈 재상으로 불린 인물 | 오토 폰 비스마르크
+영국과 스페인의 무적함대 전투가 벌어진 시대의 영국 여왕 | 엘리자베스 1세
+19세기 영국의 한 시대를 이름으로 남긴 여왕 | 빅토리아 여왕
+제2차 세계대전 중 영국 총리를 지낸 지도자로 유명한 인물 | 윈스턴 처칠
+대공황 극복을 위해 뉴딜 정책을 추진한 미국 대통령 | 프랭클린 루스벨트
+쿠바 미사일 위기 때 미국 대통령을 지낸 인물 | 존 F. 케네디
+미국 독립선언서의 주요 초안을 쓴 제3대 대통령 | 토머스 제퍼슨
+피뢰침을 발명한 미국 건국기의 정치가이자 과학자 | 벤저민 프랭클린
+스페인의 후원을 받아 1492년 대서양을 건너 아메리카에 도착한 항해자 | 크리스토퍼 콜럼버스
+아프리카 남단을 돌아 인도로 가는 항로를 개척한 포르투갈 항해자 | 바스쿠 다 가마
+최초의 세계 일주 항해를 시작했지만 도중 필리핀에서 사망한 탐험가 | 페르디난드 마젤란
+마젤란 사후 원정대를 이끌어 최초의 세계 일주 항해를 완성한 인물 | 후안 세바스티안 엘카노
+동방견문록으로 유명한 베네치아의 여행가 | 마르코 폴로
+남극점에 처음 도달한 탐험대를 이끈 노르웨이 탐험가 | 로알 아문센
+남극 탐험선 인듀어런스호와 대원 구조 이야기로 유명한 탐험가 | 어니스트 섀클턴
+텐징 노르가이와 함께 에베레스트 첫 등정에 성공한 뉴질랜드 산악인 | 에드먼드 힐러리
+근대 올림픽의 부활을 주도한 프랑스인 | 피에르 드 쿠베르탱
+스위스인으로 국제 적십자 운동의 창시자로 알려진 인물 | 앙리 뒤낭
+`);
+addPeople('p03','03   과학과 발명',`
+상대성 이론을 발표한 물리학자 | 알베르트 아인슈타인
+만유인력의 법칙과 운동 법칙으로 유명한 영국의 과학자 | 아이작 뉴턴
+지구가 태양 주위를 돈다는 지동설을 주장한 폴란드의 천문학자 | 니콜라우스 코페르니쿠스
+망원경으로 목성의 네 위성을 관측한 이탈리아의 과학자 | 갈릴레오 갈릴레이
+행성 운동에 관한 세 가지 법칙을 제시한 독일의 천문학자 | 요하네스 케플러
+라듐과 폴로늄 연구로 유명하며 두 분야에서 노벨상을 받은 과학자 | 마리 퀴리
+종의 기원을 쓴 진화론 연구자 | 찰스 다윈
+완두콩 실험으로 유전 법칙을 연구한 수도사 | 그레고어 멘델
+파스퇴르 살균법과 광견병 백신 연구로 유명한 프랑스 과학자 | 루이 파스퇴르
+페니실린을 발견한 영국의 세균학자 | 알렉산더 플레밍
+종두법을 개발한 영국의 의사 | 에드워드 제너
+원소 주기율표를 제안한 러시아의 화학자 | 드미트리 멘델레예프
+질량 보존 법칙과 근대 화학의 발전으로 유명한 프랑스 과학자 | 앙투안 라부아지에
+원자핵을 발견한 금박 산란 실험으로 유명한 과학자 | 어니스트 러더퍼드
+전자기 유도 법칙으로 유명한 영국의 과학자 | 마이클 패러데이
+전자기 현상을 네 개의 방정식으로 정리한 과학자 | 제임스 클러크 맥스웰
+교류 전력 시스템 연구로 유명한 발명가 | 니콜라 테슬라
+축음기와 실용적인 백열전구 개발로 유명한 발명가 | 토머스 에디슨
+전화 발명으로 유명한 인물로 성이 벨인 발명가 | 알렉산더 그레이엄 벨
+동력 비행기를 개발해 1903년 비행에 성공한 두 형제 | 라이트 형제
+증기기관을 개량했고 전력 단위에 이름이 쓰이는 발명가 | 제임스 와트
+금속 활자를 이용한 유럽 인쇄술 발전으로 유명한 인물 | 요하네스 구텐베르크
+다이너마이트를 발명했으며 유산으로 국제적인 상을 만든 인물 | 알프레드 노벨
+부력의 원리를 연구했으며 유레카 일화로 유명한 고대 학자 | 아르키메데스
+직각삼각형의 세 변 관계를 나타내는 정리로 유명한 고대 수학자 | 피타고라스
+기하학 원론을 쓴 고대 그리스의 수학자 | 유클리드
+직교 좌표와 나는 생각한다 고로 존재한다로 유명한 철학자 겸 수학자 | 르네 데카르트
+해석기관용 알고리즘을 기록한 러브레이스 백작부인 | 에이다 러브레이스
+튜링 기계라는 계산 모형을 제시한 영국의 수학자 | 앨런 튜링
+차분기관과 해석기관을 설계한 영국의 수학자 | 찰스 배비지
+월드 와이드 웹을 고안한 컴퓨터 과학자 | 팀 버너스리
+블랙홀과 우주론을 연구하고 시간의 역사를 쓴 과학자 | 스티븐 호킹
+코스모스를 쓰고 과학 대중화에 힘쓴 천문학자 | 칼 세이건
+침팬지를 오랫동안 관찰한 영장류학자 | 제인 구달
+침묵의 봄을 써서 환경 문제를 알린 생물학자 | 레이철 카슨
+고릴라 연구로 유명하고 고릴라와 안개 속의 삶을 기록한 연구자 | 다이앤 포시
+최초로 우주 비행을 한 소련의 우주비행사 | 유리 가가린
+최초로 달 표면에 발을 디딘 우주비행사 | 닐 암스트롱
+최초의 여성 우주비행사 | 발렌티나 테레시코바
+DNA 구조 규명에 중요한 X선 회절 사진 연구를 한 과학자 | 로절린드 프랭클린
+`);
+addPeople('p04','04   책 속으로, 작가들',`
+로미오와 줄리엣과 햄릿을 쓴 영국의 극작가 | 윌리엄 셰익스피어
+돈키호테를 쓴 스페인의 작가 | 미겔 데 세르반테스
+어린 왕자를 쓴 프랑스의 작가이자 조종사 | 앙투안 드 생텍쥐페리
+해리 포터 시리즈를 쓴 영국의 작가 | J. K. 롤링
+반지의 제왕과 호빗을 쓴 작가 | J. R. R. 톨킨
+나니아 연대기를 쓴 작가 | C. S. 루이스
+찰리와 초콜릿 공장을 쓴 작가 | 로알드 달
+이상한 나라의 앨리스를 쓴 작가 | 루이스 캐럴
+피터 팬을 탄생시킨 스코틀랜드 작가 | 제임스 매슈 배리
+보물섬과 지킬 박사와 하이드를 쓴 작가 | 로버트 루이스 스티븐슨
+셜록 홈스 시리즈를 쓴 추리 소설가 | 아서 코난 도일
+에르퀼 푸아로와 미스 마플을 탄생시킨 추리 소설가 | 애거사 크리스티
+오만과 편견을 쓴 영국의 작가 | 제인 오스틴
+제인 에어를 쓴 영국의 작가 | 샬럿 브론테
+폭풍의 언덕을 쓴 영국의 작가 | 에밀리 브론테
+올리버 트위스트와 크리스마스 캐럴을 쓴 작가 | 찰스 디킨스
+레 미제라블과 노트르담 드 파리를 쓴 프랑스 작가 | 빅토르 위고
+전쟁과 평화와 안나 카레니나를 쓴 러시아 작가 | 레프 톨스토이
+죄와 벌과 카라마조프가의 형제들을 쓴 작가 | 표도르 도스토옙스키
+노인과 바다를 쓴 미국의 작가 | 어니스트 헤밍웨이
+톰 소여의 모험을 쓴 미국의 작가 | 마크 트웨인
+동물농장과 1984를 쓴 영국의 작가 | 조지 오웰
+변신에서 벌레로 변한 그레고르 잠자 이야기를 쓴 작가 | 프란츠 카프카
+데미안과 수레바퀴 아래서를 쓴 작가 | 헤르만 헤세
+백 년의 고독을 쓴 콜롬비아의 작가 | 가브리엘 가르시아 마르케스
+신곡을 쓴 이탈리아의 시인 | 단테 알리기에리
+일리아스와 오디세이아의 작가로 전해지는 고대 시인 | 호메로스
+인어 공주와 미운 오리 새끼를 쓴 덴마크 작가 | 한스 크리스티안 안데르센
+헨젤과 그레텔 등 독일의 옛이야기를 모은 두 형제 | 그림 형제
+해저 2만 리와 80일간의 세계 일주를 쓴 작가 | 쥘 베른
+서시와 별 헤는 밤을 쓴 한국의 시인 | 윤동주
+진달래꽃을 쓴 한국의 시인 | 김소월
+님의 침묵을 쓴 시인이자 독립운동가 | 한용운
+청포도와 광야를 쓴 저항 시인 | 이육사
+향수를 쓴 한국의 시인 | 정지용
+메밀꽃 필 무렵을 쓴 한국의 소설가 | 이효석
+봄봄과 동백꽃을 쓴 한국의 소설가 | 김유정
+소나기를 쓴 한국의 소설가 | 황순원
+장편소설 토지를 쓴 한국의 작가 | 박경리
+아홉 살 인생을 쓴 한국의 소설가로 성이 위인 인물 | 위기철
+`);
+addPeople('p05','05   미술과 음악',`
+모나리자와 최후의 만찬을 그린 르네상스 예술가 | 레오나르도 다 빈치
+다비드상을 조각하고 시스티나 성당 천장화를 그린 예술가 | 미켈란젤로
+아테네 학당을 그린 이탈리아 화가 | 라파엘로
+별이 빛나는 밤과 해바라기로 유명한 네덜란드 화가 | 빈센트 반 고흐
+게르니카를 그렸으며 입체주의로 유명한 화가 | 파블로 피카소
+수련 연작과 인상 해돋이를 그린 프랑스 화가 | 클로드 모네
+절규를 그린 노르웨이 화가 | 에드바르 뭉크
+녹아내리는 시계가 등장하는 기억의 지속을 그린 화가 | 살바도르 달리
+키스라는 금빛 그림으로 유명한 오스트리아 화가 | 구스타프 클림트
+진주 귀걸이를 한 소녀를 그린 네덜란드 화가 | 요하네스 베르메르
+야경이라는 집단 초상화로 유명한 네덜란드 화가 | 렘브란트
+비너스의 탄생을 그린 이탈리아 화가 | 산드로 보티첼리
+발레 무용수 그림을 많이 남긴 프랑스 화가 | 에드가 드가
+뱃놀이하는 사람들의 점심을 그린 프랑스 화가 | 피에르 오귀스트 르누아르
+물랭 루주 포스터로 유명한 프랑스 화가 | 앙리 드 툴루즈로트레크
+그랑드자트섬의 일요일 오후를 점묘법으로 그린 화가 | 조르주 쇠라
+빨강 파랑 노랑의 사각형과 검은 직선으로 유명한 네덜란드 화가 | 피트 몬드리안
+캠벨 수프 통조림과 마릴린 먼로 작품으로 유명한 팝아트 작가 | 앤디 워홀
+멕시코 출신으로 자화상과 이어진 눈썹으로 유명한 화가 | 프리다 칼로
+생각하는 사람을 만든 프랑스 조각가 | 오귀스트 로댕
+음악의 아버지라고 불리며 브란덴부르크 협주곡을 작곡한 인물 | 요한 제바스티안 바흐
+메시아의 할렐루야로 유명한 작곡가 | 게오르크 프리드리히 헨델
+사계라는 바이올린 협주곡으로 유명한 이탈리아 작곡가 | 안토니오 비발디
+교향곡의 아버지로 불리는 오스트리아 작곡가 | 요제프 하이든
+마술피리와 피가로의 결혼을 작곡한 오스트리아 작곡가 | 볼프강 아마데우스 모차르트
+운명 교향곡과 합창 교향곡을 작곡한 인물 | 루트비히 판 베토벤
+가곡 마왕과 겨울 나그네를 작곡한 인물 | 프란츠 슈베르트
+폴란드 출신으로 피아노의 시인이라 불리는 작곡가 | 프레데리크 쇼팽
+헝가리 광시곡으로 유명한 피아니스트이자 작곡가 | 프란츠 리스트
+백조의 호수와 호두까기 인형을 작곡한 인물 | 표트르 차이콥스키
+달빛과 목신의 오후에의 전주곡을 작곡한 프랑스 작곡가 | 클로드 드뷔시
+볼레로를 작곡한 프랑스 작곡가 | 모리스 라벨
+카르멘을 작곡한 프랑스 작곡가 | 조르주 비제
+아이다와 라 트라비아타를 작곡한 이탈리아 작곡가 | 주세페 베르디
+나비 부인과 투란도트를 작곡한 이탈리아 작곡가 | 자코모 푸치니
+신세계 교향곡을 작곡한 체코 작곡가 | 안토닌 드보르자크
+핀란디아를 작곡한 핀란드 작곡가 | 얀 시벨리우스
+대학 축전 서곡과 유명한 자장가를 작곡한 독일 작곡가 | 요하네스 브람스
+동물의 사육제를 작곡한 프랑스 작곡가 | 카미유 생상스
+전람회의 그림을 작곡한 러시아 작곡가 | 모데스트 무소륵스키
+`);
+addPeople('p06','06   스포츠 스타',`
+2010 밴쿠버 올림픽 피겨 스케이팅 여자 싱글 금메달리스트 | 김연아
+2021–22 잉글랜드 프리미어리그 공동 득점왕인 한국 축구 선수 | 손흥민
+맨체스터 유나이티드에서 뛰었으며 두 개의 심장이라는 별명으로 알려진 한국 선수 | 박지성
+독일 분데스리가에서 활약한 한국의 차붐 | 차범근
+한국 여자 배구 선수로 식빵 언니라는 별명이 있는 인물 | 김연경
+2008 베이징 올림픽 수영 남자 자유형 400m 금메달리스트 | 박태환
+2012 런던 올림픽 체조 남자 도마 금메달리스트 | 양학선
+2018 평창 올림픽 스켈레톤 남자 금메달리스트 | 윤성빈
+2010 밴쿠버와 2014 소치 올림픽 스피드스케이팅 여자 500m 우승자 | 이상화
+2016 리우 올림픽 양궁 여자 개인전과 단체전 금메달리스트 | 장혜진
+2020 도쿄 올림픽 양궁 3관왕인 한국 여자 선수 | 안산
+2016 리우 올림픽 펜싱 남자 사브르 개인전 동메달리스트 | 김정환
+1988 서울 올림픽 탁구 남자 단식 금메달리스트 | 유남규
+2004 아테네 올림픽 탁구 남자 단식 금메달리스트 | 유승민
+1992 바르셀로나 올림픽 마라톤 금메달리스트 | 황영조
+한국인 최초로 미국 메이저리그에 진출한 야구 선수 | 박찬호
+LA 다저스와 토론토 블루제이스에서 뛴 한국의 왼손 투수 | 류현진
+라이언 킹이라는 별명으로 유명한 한국의 홈런 타자 | 이승엽
+바람의 아들이라는 별명으로 유명한 한국의 야구 선수 | 이종범
+1998년 US 여자 오픈 골프 대회 우승으로 유명한 한국 선수 | 박세리
+2016 리우 올림픽 여자 골프 금메달리스트 | 박인비
+아르헨티나 주장으로 2022 카타르 월드컵에서 우승한 축구 선수 | 리오넬 메시
+포르투갈 축구 선수로 CR7이라는 별명으로 알려진 인물 | 크리스티아누 호날두
+브라질의 축구 황제로 불리며 월드컵에서 세 차례 우승한 선수 | 펠레
+1986 월드컵에서 신의 손 골로 유명한 아르헨티나 선수 | 디에고 마라도나
+1998 월드컵 결승에서 두 골을 넣은 프랑스 선수 | 지네딘 지단
+2018 월드컵에서 프랑스 우승에 기여하고 2022 결승에서 해트트릭한 선수 | 킬리안 음바페
+시카고 불스에서 뛰었으며 에어 조던으로 유명한 농구 선수 | 마이클 조던
+LA 레이커스에서 뛰었으며 블랙 맘바라는 별명이 있는 농구 선수 | 코비 브라이언트
+골든스테이트 워리어스의 3점 슛으로 유명한 농구 선수 | 스테픈 커리
+수영에서 올림픽 금메달 23개를 획득한 미국 선수 | 마이클 펠프스
+자메이카 출신으로 번개라는 별명이 있는 단거리 육상 선수 | 우사인 볼트
+클레이 코트의 황제로 불리는 스페인 테니스 선수 | 라파엘 나달
+스위스 출신으로 윔블던 남자 단식에서 8차례 우승한 테니스 선수 | 로저 페더러
+미국의 테니스 선수로 언니 비너스와 함께 유명한 동생 | 세리나 윌리엄스
+나비처럼 날아서 벌처럼 쏜다로 유명한 복싱 선수 | 무하마드 알리
+투수와 타자를 함께 하는 일본의 야구 선수로 2023 WBC 일본 대표였던 인물 | 오타니 쇼헤이
+체조 기술에 자신의 이름이 붙어 있는 미국 여자 선수로 성이 바일스인 인물 | 시몬 바일스
+독일의 F1 선수로 페라리에서 여러 차례 월드 챔피언이 된 인물 | 미하엘 슈마허
+한국의 리그 오브 레전드 선수로 닉네임이 페이커인 인물 | 이상혁 / 페이커
+`);
+addPeople('p07','07   영화와 대중문화',`
+영화 기생충을 연출한 한국 감독 | 봉준호
+영화 올드보이를 연출한 한국 감독 | 박찬욱
+영화 기생충에서 기택을 연기한 배우 | 송강호
+드라마 오징어 게임에서 성기훈을 연기한 배우 | 이정재
+드라마 도깨비에서 김신을 연기한 배우 | 공유
+드라마 별에서 온 그대에서 도민준을 연기한 배우 | 김수현
+드라마 별에서 온 그대에서 천송이를 연기한 배우 | 전지현
+드라마 이상한 변호사 우영우에서 우영우를 연기한 배우 | 박은빈
+드라마 더 글로리에서 문동은을 연기한 배우 | 송혜교
+드라마 미스터 션샤인에서 고애신을 연기한 배우 | 김태리
+드라마 응답하라 1988에서 성덕선을 연기한 배우 | 혜리 / 이혜리
+드라마 이태원 클라쓰에서 박새로이를 연기한 배우 | 박서준
+드라마 사랑의 불시착에서 리정혁을 연기한 배우 | 현빈
+드라마 사랑의 불시착에서 윤세리를 연기한 배우 | 손예진
+영화 극한직업에서 고반장을 연기한 배우 | 류승룡
+강남스타일을 부른 한국 가수 | 싸이
+좋은 날과 밤편지를 부른 가수이며 본명은 이지은 | 아이유
+방탄소년단의 리더이며 활동명은 두 글자 영문 이니셜 | RM / 김남준
+방탄소년단의 멤버로 솔로곡 Seven을 부른 인물 | 정국 / 전정국
+블랙핑크의 멤버로 솔로곡 SOLO를 부른 인물 | 제니 / 김제니
+블랙핑크의 멤버로 솔로곡 LALISA를 부른 인물 | 리사
+블랙핑크의 멤버로 브루노 마스와 APT.를 부른 인물 | 로제
+빅뱅의 멤버로 삐딱하게를 부른 인물 | 지드래곤 / G-DRAGON
+가수로 데뷔했으며 아틀란티스 소녀와 No.1을 부른 인물 | 보아
+10 Minutes와 U-Go-Girl을 부른 가수 | 이효리
+국민 MC로 불리며 무한도전과 런닝맨을 진행한 방송인 | 유재석
+씨름 선수 출신으로 1박 2일과 아는 형님에 출연한 방송인 | 강호동
+런닝맨에서 능력자로 불리며 한 남자를 부른 가수 | 김종국
+마블 영화에서 아이언맨을 연기한 배우 | 로버트 다우니 주니어
+마블 영화에서 캡틴 아메리카 스티브 로저스를 연기한 배우 | 크리스 에반스
+마블 영화에서 토르를 연기한 배우 | 크리스 헴스워스
+영화 타이타닉에서 잭을 연기한 배우 | 레오나르도 디카프리오
+해리 포터 영화에서 해리 포터를 연기한 배우 | 대니얼 래드클리프
+해리 포터 영화에서 헤르미온느를 연기한 배우 | 엠마 왓슨
+작은 중절모와 지팡이로 유명한 무성영화 희극 배우 | 찰리 채플린
+문워크와 Thriller로 유명한 미국 가수 | 마이클 잭슨
+Love Story와 Shake It Off를 부른 미국 가수 | 테일러 스위프트
+Hello와 Someone Like You를 부른 영국 가수 | 아델
+Shape of You를 부른 영국의 싱어송라이터 | 에드 시런
+퀸의 보컬로 보헤미안 랩소디를 부른 인물 | 프레디 머큐리
+`);
+addPeople('p08','08   애니메이션 친구들',`
+비행사 모자와 고글을 쓴 꼬마 펭귄 | 뽀로로
+뽀로로와 함께 살며 자신의 이름으로 말하는 초록색 아기 공룡 | 크롱
+뽀로로의 친구로 분홍색 비버이며 요리를 좋아하는 캐릭터 | 루피
+뽀로로의 친구로 발명을 좋아하는 주황색 여우 | 에디
+뽀로로의 친구로 머리에 보라색 리본을 단 여자 펭귄 | 패티
+뽀로로의 친구로 덩치가 큰 흰색 북극곰 | 포비
+뽀로로의 친구로 노래하기를 좋아하는 작은 벌새 | 해리
+배의 주머니에서 신기한 도구를 꺼내는 파란 고양이 로봇 | 도라에몽
+도라에몽과 함께 사는 안경 쓴 소년의 한국판 이름 | 노진구
+짱구는 못말려의 빨간 옷을 입은 주인공 | 신짱구
+몸이 어린아이가 된 고등학생 탐정으로 안경을 쓴 주인공 | 코난 / 에도가와 코난
+명탐정 코난에서 남도일의 소꿉친구이며 공수도에 능한 인물의 한국판 이름 | 유미란
+명탐정 코난에 등장하는 흰 모자와 망토의 마술사 괴도 | 괴도 키드
+호카게를 꿈꾸는 닌자로 배 속에 구미가 봉인된 주인공 | 우즈마키 나루토
+나루토의 라이벌로 사륜안을 사용하는 우치하 일족의 인물 | 우치하 사스케
+나루토의 동료로 분홍색 머리의 의료 닌자 | 하루노 사쿠라
+원피스에서 밀짚모자를 쓰고 해적왕을 꿈꾸는 주인공 | 몽키 D. 루피
+원피스에서 세 자루의 검을 사용하는 초록색 머리 검사 | 롤로노아 조로
+원피스에서 의사 역할을 하는 순록 | 토니토니 쵸파
+드래곤볼에서 에네르기파를 쓰는 사이어인 주인공 | 손오공
+드래곤볼에서 사이어인의 왕자라고 불리는 인물 | 베지터
+포켓몬 애니메이션에서 피카츄와 여행하는 주인공의 한국판 이름 | 한지우
+포켓몬에서 붉은 볼과 번개 모양 꼬리를 가진 노란 캐릭터 | 피카츄
+이웃집 토토로에서 숲에 사는 커다란 회색 생명체 | 토토로
+센과 치히로의 행방불명에서 부모를 구하려고 온천장에서 일하는 소녀 | 치히로
+센과 치히로의 행방불명에서 용으로 변하며 치히로를 돕는 소년 | 하쿠
+마녀 배달부 키키에서 빗자루를 타고 배달하는 소녀 | 키키
+벼랑 위의 포뇨에서 인간이 되고 싶어 하는 물고기 소녀 | 포뇨
+하울의 움직이는 성에서 성을 소유한 금발의 마법사 | 하울
+겨울왕국에서 얼음 마법을 사용하는 언니 | 엘사
+겨울왕국에서 엘사를 찾아 나서는 동생 | 안나
+겨울왕국에서 여름을 좋아하는 눈사람 | 올라프
+토이 스토리에서 카우보이 모자를 쓴 인형 | 우디
+토이 스토리에서 우주 비행사 모습을 한 장난감 | 버즈 라이트이어
+라이온 킹에서 무파사의 아들이자 주인공인 사자 | 심바
+라이온 킹에서 품바와 짝을 이루는 미어캣 | 티몬
+라이온 킹에서 티몬과 짝을 이루는 혹멧돼지 | 품바
+늪에 사는 초록색 오거로 자신과 이름이 같은 영화의 주인공 | 슈렉
+슈렉에서 밤이면 오거의 모습으로 변하는 공주 | 피오나
+슈렉과 함께 모험하는 말 많은 당나귀 | 동키
+`);
+addPeople('p09','09   게임 캐릭터',`
+빨간 모자와 콧수염으로 유명한 닌텐도 배관공 | 마리오
+초록색 모자를 쓴 마리오의 동생 | 루이지
+마리오 시리즈에서 분홍색 드레스를 입은 버섯 왕국의 공주 | 피치 공주
+마리오 시리즈에서 등껍질에 가시가 달린 거대한 거북 악당 | 쿠파
+마리오 시리즈에서 긴 혀를 내밀고 알을 만드는 초록색 공룡 | 요시
+빨간 넥타이에 DK가 적힌 닌텐도의 고릴라 | 동키콩
+젤다의 전설에서 마스터 소드를 사용하는 용사 | 링크
+젤다의 전설에서 시리즈 제목에 이름이 들어가는 하이랄의 공주 | 젤다
+적을 빨아들이고 능력을 복사하는 분홍색 동그란 닌텐도 캐릭터 | 커비
+별의 커비 시리즈에서 커다란 망치를 사용하는 왕 | 디디디 대왕
+별의 커비 시리즈에서 가면을 쓰고 검을 사용하는 기사 | 메타 나이트
+메트로이드 시리즈에서 파워 슈트를 입는 현상금 사냥꾼 | 사무스 아란
+스플래툰에서 인간과 오징어 모습으로 바뀌는 플레이어 종족 | 잉클링
+동물의 숲에서 안내소 업무를 돕는 노란 강아지 | 여울
+동물의 숲에서 집과 이주 계획을 안내하는 너구리 | 너굴
+동물의 숲에서 기타를 연주하는 흰색 개 가수 | T.K. / K.K. 슬라이더
+매우 빠르게 달리는 파란 고슴도치 게임 주인공 | 소닉
+소닉의 친구로 두 개의 꼬리로 날 수 있는 여우 | 테일즈
+소닉 시리즈에서 주먹으로 싸우며 마스터 에메랄드를 지키는 빨간 가시두더지 | 너클즈
+소닉과 닮았으며 검은색 몸에 붉은 줄무늬가 있는 고슴도치 | 섀도우
+미로에서 점을 먹고 유령을 피해 다니는 노란 원형 캐릭터 | 팩맨
+팔에 버스터를 장착한 파란색 로봇으로 캡콤 게임의 주인공 | 록맨 / 메가맨
+스트리트 파이터에서 흰 도복을 입고 파동권을 쓰는 인물 | 류
+스트리트 파이터에서 파란 옷과 양쪽 만두 머리로 유명한 여성 캐릭터 | 춘리
+마인크래프트의 기본 캐릭터 중 파란 상의와 짙은 머리색을 가진 인물 | 스티브
+마인크래프트의 기본 캐릭터 중 주황색 머리와 초록 상의를 가진 인물 | 알렉스
+마인크래프트에서 가까이 다가와 폭발하는 초록색 몬스터 | 크리퍼
+마인크래프트에서 순간 이동을 하며 길고 검은 몸을 가진 몬스터 | 엔더맨
+오버워치에서 시간을 되돌리는 능력을 쓰는 영국 출신 영웅 | 트레이서
+오버워치에서 메카를 조종하며 본명은 송하나인 한국 영웅 | D.Va / 디바
+오버워치에서 날개 달린 슈트를 입고 치유 지팡이를 사용하는 의사 | 메르시
+오버워치에서 해골 가면을 쓰고 쌍산탄총을 사용하는 영웅 | 리퍼
+리그 오브 레전드에서 아홉 꼬리를 가진 여우 마법사 | 아리
+리그 오브 레전드에서 독버섯 함정을 설치하는 요들 정찰병 | 티모
+리그 오브 레전드에서 바람 장막을 사용하는 검객 | 야스오
+리그 오브 레전드에서 파란 긴 머리와 로켓 무기로 유명한 캐릭터 | 징크스
+리그 오브 레전드에서 빛의 마법을 사용하는 데마시아의 소녀 | 럭스
+갓 오브 워에서 붉은 문신과 흰 피부를 가진 주인공 | 크레토스
+툼 레이더 시리즈에서 유적을 탐험하는 여성 주인공 | 라라 크로프트
+동물의 숲에서 박물관을 운영하는 부엉이 | 부엉
+`);
+addPeople('p10','10   동화 소설 신화',`
+유리 구두를 남겨 왕자가 찾게 되는 동화 속 주인공 | 신데렐라
+일곱 난쟁이와 살며 독이 든 사과를 먹는 공주 | 백설공주
+탑에 갇혀 살며 아주 긴 머리카락을 가진 동화 속 주인공 | 라푼젤
+물레에 찔려 오랫동안 잠든 동화 속 공주 | 잠자는 숲속의 공주
+할머니 집에 가다가 늑대를 만나는 빨간 망토의 소녀 | 빨간 모자
+목소리를 대가로 사람의 다리를 얻는 안데르센 동화의 주인공 | 인어 공주
+네버랜드에 살며 어른이 되지 않는 소년 | 피터 팬
+거짓말을 하면 코가 길어지는 나무 인형 | 피노키오
+흰 토끼를 따라 이상한 나라로 들어간 소녀 | 앨리스
+마법 램프를 얻는 아라비안나이트의 청년 | 알라딘
+디즈니 알라딘에서 램프 속에 살며 소원을 들어주는 파란 존재 | 지니
+아라비안나이트에서 일곱 번의 항해를 하는 뱃사람 | 신드바드
+열려라 참깨라는 주문과 40인의 도둑 이야기에 등장하는 주인공 | 알리바바
+과자 집에 도착하는 남매 중 오빠의 이름 | 헨젤
+과자 집에 도착하는 남매 중 여동생의 이름 | 그레텔
+주인을 부자로 만들어 주는 장화를 신은 동화 속 동물 | 장화 신은 고양이
+오리인 줄 알았지만 자라서 백조가 되는 동화 속 주인공 | 미운 오리 새끼
+크리스마스 캐럴에서 세 유령을 만나 변하는 구두쇠 | 에버니저 스크루지
+베이커가 221B에 사는 소설 속 명탐정 | 셜록 홈스
+셜록 홈스와 함께 사건을 해결하는 의사 친구 | 존 왓슨
+브램 스토커의 소설에 등장하는 트란실바니아의 흡혈귀 백작 | 드라큘라
+메리 셸리의 소설에서 생명체를 만들어 내는 과학자의 성 | 프랑켄슈타인
+정글에서 유인원에게 길러진 에드거 라이스 버로스 소설의 주인공 | 타잔
+셔우드 숲에서 활약하며 부자의 재물을 가난한 이에게 나누는 전설의 의적 | 로빈 후드
+엑스칼리버와 원탁의 기사들로 유명한 전설의 왕 | 아서 왕
+아서 왕 전설에서 왕을 돕는 마법사 | 멀린
+그리스 신화에서 번개를 무기로 사용하는 신들의 왕 | 제우스
+그리스 신화에서 제우스의 아내이자 결혼의 여신 | 헤라
+그리스 신화에서 삼지창을 든 바다의 신 | 포세이돈
+그리스 신화에서 저승 세계를 다스리는 신 | 하데스
+그리스 신화에서 지혜의 여신이며 아테네와 관련된 신 | 아테나
+그리스 신화에서 음악과 예언을 관장하며 아르테미스의 쌍둥이인 신 | 아폴론
+그리스 신화에서 사냥의 여신이며 아폴론의 쌍둥이인 신 | 아르테미스
+그리스 신화에서 날개 달린 신발을 신은 신들의 전령 | 헤르메스
+그리스 신화에서 전쟁을 상징하며 로마의 마르스와 대응하는 신 | 아레스
+그리스 신화에서 사랑과 아름다움의 여신 | 아프로디테
+그리스 신화에서 불과 대장장이 일을 맡는 신 | 헤파이스토스
+그리스 신화에서 곡물과 농업의 여신이며 페르세포네의 어머니 | 데메테르
+그리스 신화에서 포도주와 축제의 신 | 디오니소스
+그리스 신화에서 열두 과업을 수행한 힘센 영웅 | 헤라클레스
+`);
+addPhrases('w01','01   맛있는 한 끼',`
+떡볶이
+김밥
+비빔밥
+불고기
+삼겹살
+갈비찜
+된장찌개
+김치찌개
+부대찌개
+미역국
+콩나물국
+설렁탕
+삼계탕
+갈비탕
+육개장
+감자탕
+냉면
+칼국수
+잔치국수
+짜장면
+짬뽕
+탕수육
+볶음밥
+돈가스
+햄버거
+샌드위치
+스파게티
+피자
+초밥
+우동
+라면
+만두
+잡채
+김치전
+해물파전
+떡국
+순대
+순두부
+오므렛
+카레`);
+addPhrases('w02','02   과일과 달콤한 간식',`
+사과
+포도
+딸기
+수박
+참외
+복숭아
+자두
+살구
+오렌지
+레몬
+자몽
+바나나
+파인애플
+망고
+키위
+체리
+블루베리
+라즈베리
+코코넛
+석류
+무화과
+멜론
+아보카도
+대추
+매실
+리치
+용과
+초콜릿
+마카롱
+도넛
+크루아상
+붕어빵
+호떡
+팥빙수
+솜사탕
+푸딩
+홍시
+감귤
+단감
+청포도`);
+addPhrases('w03','03   동물 친구들',`
+강아지
+고양이
+토끼
+햄스터
+다람쥐
+고슴도치
+기니피그
+친칠라
+여우
+늑대
+호랑이
+사자
+표범
+치타
+코끼리
+기린
+얼룩말
+코뿔소
+하마
+캥거루
+코알라
+판다
+수달
+비버
+너구리
+오소리
+두더지
+박쥐
+원숭이
+고릴라
+침팬지
+오랑우탄
+나무늘보
+미어캣
+낙타
+알파카
+라마
+순록
+멧돼지
+북극곰`);
+addPhrases('w04','04   바다와 하늘의 생명',`
+돌고래
+범고래
+상어
+가오리
+문어
+오징어
+낙지
+해파리
+불가사리
+해마
+복어
+고등어
+연어
+참치
+멸치
+정어리
+장어
+새우
+꽃게
+바닷가재
+소라
+전복
+가리비
+펭귄
+독수리
+참새
+비둘기
+까치
+까마귀
+앵무새
+부엉이
+올빼미
+타조
+공작
+벌새
+딱따구리
+잠자리
+무당벌레
+사슴벌레
+고래`);
+addPhrases('w05','05   우리 학교',`
+교실
+칠판
+분필
+교탁
+책상
+의자
+사물함
+시간표
+알림장
+교과서
+공책
+연필
+지우개
+샤프
+볼펜
+형광펜
+필통
+책가방
+색연필
+크레파스
+물감
+팔레트
+도화지
+스케치북
+가위
+각도기
+컴퍼스
+클립
+운동장
+체육관
+도서관
+과학실
+음악실
+미술실
+급식실
+보건실
+방송실
+교무실
+자석
+색종이`);
+addPhrases('w06','06   집 안의 물건',`
+냉장고
+세탁기
+청소기
+에어컨
+선풍기
+가습기
+텔레비전
+전기밥솥
+토스터
+믹서기
+드라이어
+다리미
+커피머신
+정수기
+침대
+소파
+옷장
+서랍장
+화장대
+책장
+거울
+커튼
+이불
+베개
+매트리스
+옷걸이
+수건
+칫솔
+치약
+비누
+샴푸
+휴지
+쓰레기통
+우산
+전등
+전구
+냄비
+프라이팬
+주전자
+밥솥`);
+addPhrases('w07','07   스포츠와 취미',`
+축구
+농구
+야구
+배구
+탁구
+배드민턴
+테니스
+골프
+볼링
+당구
+수영
+다이빙
+서핑
+스키
+스노보드
+스케이트
+컬링
+봅슬레이
+태권도
+유도
+검도
+펜싱
+양궁
+사격
+레슬링
+복싱
+역도
+체조
+마라톤
+허들
+높이뛰기
+멀리뛰기
+클라이밍
+줄넘기
+등산
+낚시
+캠핑
+달리기
+산책
+요가`);
+addPhrases('w08','08   여행을 떠나요',`
+자동차
+버스
+택시
+지하철
+기차
+비행기
+헬리콥터
+자전거
+오토바이
+유람선
+여객선
+잠수함
+요트
+케이블카
+모노레일
+열기구
+우주선
+소방차
+구급차
+경찰차
+굴착기
+불도저
+트랙터
+기중기
+공항
+기차역
+정류장
+주차장
+휴게소
+놀이공원
+수족관
+동물원
+박물관
+미술관
+식물원
+천문대
+전망대
+해수욕장
+스키장
+킥보드`);
+addPhrases('w09','09   자연과 지구',`
+무지개
+번개
+천둥
+소나기
+이슬비
+장마
+태풍
+눈보라
+서리
+안개
+구름
+바람
+이슬
+고드름
+우박
+폭염
+한파
+가뭄
+홍수
+지진
+화산
+용암
+빙하
+사막
+초원
+밀림
+계곡
+폭포
+동굴
+호수
+바다
+갯벌
+산호초
+해변
+절벽
+반도
+지평선
+산봉우리
+강물
+나뭇잎`);
+addPhrases('w10','10   과학과 음악 도전',`
+태양
+수성
+금성
+지구
+화성
+목성
+토성
+천왕성
+해왕성
+혜성
+은하수
+블랙홀
+별자리
+인공위성
+망원경
+현미경
+온도계
+나침반
+자석
+피아노
+바이올린
+비올라
+첼로
+플루트
+클라리넷
+오보에
+바순
+색소폰
+트럼펫
+트롬본
+호른
+튜바
+하프
+기타
+우쿨렐레
+아코디언
+실로폰
+마림바
+우주
+오르간`);
+</script><script>'use strict';
+const games=[
+ {name:'마피아',people:'반 전체',type:'추리   아이스브레이킹',time:180,headline:'우리 반에 마피아가 있다!',cue:'눈을 감고, 이야기를 시작해요',rules:['조 구분 없이 반 전체가 같은 게임에 참여해요. 진행자는 참여 인원에서 빼고, 교사가 역할 배정에서 학생별 역할을 지정한 뒤, 각 학생에게 종이 쪽지 등으로 비공개로 알려 주세요.','밤에는 모두 눈을 감아요. 진행자가 마피아 → 경찰 → 의사 순서로 깨워 지목을 확인해요. 경찰 조사 결과는 비공개로 알려 주세요.','낮에는 밤의 결과를 발표하고 생존자끼리 토론해요. 의사가 마피아의 지목 대상을 살리면 밤의 탈락자는 없어요.','생존자들이 한 표씩 투표해 최다 득표자를 탈락시켜요. 동점이면 해당 후보만 재투표하고, 다시 동점이면 탈락 없이 밤으로 넘어가요.','탈락자는 말을 하거나 역할을 암시하지 않고 관전해요. 마피아가 모두 탈락하면 시민 편 승리, 생존 마피아 수가 나머지 생존자 수 이상이면 마피아 편 승리!'],supplies:'반 전체가 한 게임에 참여   조별 점수 없음   별도 진행자 1명과 비공개 역할 카드 준비'},
+ {name:'초성 퀴즈 팀전',people:'조별 전원',type:'두뇌   순발력',time:60,quiz:'initial',rules:['화면에 나온 초성만 보고 답을 생각해요.','팀 이름을 먼저 외친 팀에게 답할 기회를 주세요.','정답을 공개한 뒤 점수를 기록하고 다음 문제로 이동해요.'],supplies:'기본 제안: 정답 10점   오답 시 다른 팀에게 기회'},
+ {name:'꼬깔 쓰고 공 차기',people:'조별 3~4명',type:'활동   예능',time:120,headline:'좁은 시야, 커다란 도전',cue:'준비, 조준… 골!',rules:['팀별 대표가 작은 구멍이 있는 꼬깔을 얼굴 앞에 대요.','정해진 출발선에서 공을 찾아 골대에 넣어요.','제한 시간 동안 넣은 골 수를 세고 팀 점수를 기록해요.'],supplies:'꼬깔   부드러운 공   간이 골대 / 걷기로 진행하고 주변 장애물을 치워 주세요.'},
+ {name:'인물 퀴즈 팀전',people:'조별 전원 또는 대표',type:'추리   순발력',time:60,quiz:'person',rules:['인물의 특징을 읽고 누구인지 맞혀 보세요.','팀 이름을 먼저 외치고 정답을 말해요.','정답을 공개하고 점수를 기록해요. 동명이인은 함께 확인해 주세요.'],supplies:'특징 퀴즈 기본 제공   문제 편집에서 우리 반 맞춤 문제로 바꿀 수 있어요.'},
+ {name:'스피드 퀴즈',people:'조별 2명',type:'설명   순발력',time:60,quiz:'speed',rules:['한 명은 화면을 보고 설명하고, 한 명은 화면을 등지고 맞혀요.','제시어 자체나 글자 초성을 말하지 않고 설명해요.','맞히거나 통과하면 다음 문제로! 제한 시간 뒤 정답 수를 점수에 반영해요.'],supplies:'진행자가 정답 수를 따로 세어 기록해 주세요.   타이머 시작은 별도 버튼'},
+ {name:'고요 속의 외침',people:'조별 4~5명',type:'전달   예능',time:120,quiz:'whisper',rules:['2~4글자의 짧은 단어를 입 모양으로 전달해요.','팀원들이 한 줄로 서고 첫 사람만 제시어를 확인해요.','다음 사람에게 입 모양으로 전달하고, 나머지 사람은 화면을 보지 않아요.','마지막 사람이 정답을 말하면 원래 제시어와 비교해요.'],supplies:'헤드폰 또는 귀마개 / 음악은 편안한 음량으로 준비해 주세요.'},
+ {name:'아이엠그라운드',people:'조별 3명',type:'순발력   개인전',time:180,headline:'리듬 타고, 이름 부르고!',cue:'아이엠그라운드, 자기소개 하기',rules:['팀별 3명이 원을 만들고 각자 사용할 별명을 소개해요.','같은 4박자 리듬에 맞춰 상대의 별명과 횟수를 불러요.','박자를 놓치거나 잘못 답하면 탈락! 남은 순위에 따라 소속 팀에 점수를 주세요.'],supplies:'기본 제안: 1위 30점   2위 20점   3위 10점'},
+ {name:'빅발리볼',people:'조원 전체',type:'단합   피날레',time:300,headline:'마지막 한 점까지, 다 함께!',cue:'혼자보다 함께할 때 더 강하니까',rules:['팀을 나누고 경기장과 네트, 큰 공을 준비해요.','팀당 최대 3번 터치로 상대 코트에 공을 넘겨요.','정해 둔 목표 점수 또는 제한 시간에 맞춰 승패를 정하고 최종 점수를 기록해요.'],supplies:'큰 비치볼   네트 / 기본 제안: 15점 선취   동점이면 1점 결승전'}
+];
+const defaults={initial:[['음식   ㄸㅂㅇ','떡볶이'],['학교   ㅊㅍ','칠판'],['동물   ㅋㄲㄹ','코끼리'],['음식   ㅂㅂㅂ','비빔밥'],['스포츠   ㅂㄷㅁㅌ','배드민턴'],['과일   ㅍㅇㅇㅍ','파인애플'],['물건   ㅈㅇㄱ','지우개'],['장소   ㄷㅅㄱ','도서관'],['동물   ㄱㅅㄷㅊ','고슴도치'],['음식   ㄱㅂ','김밥'],['과일   ㅂㅅㅇ','복숭아'],['학교   ㅇㄷㅈ','운동장']],person:[['훈민정음을 창제한 조선의 왕','세종대왕'],['거북선과 함께 떠오르는 조선의 장군','이순신'],['한글 이름은 김연아, 이 종목의 여왕이라고 불려요. 누구일까요?','김연아'],['상대성 이론을 발표한 물리학자','알베르트 아인슈타인'],['사과 이야기와 만유인력으로 유명한 과학자','아이작 뉴턴'],['별이 빛나는 밤을 그린 화가','빈센트 반 고흐'],['해리 포터의 작가','J. K. 롤링'],['3.1 운동에 참여한 아우내 장터의 독립운동가','유관순']],speed:[['우산','우산'],['롤러코스터','롤러코스터'],['양치질','양치질'],['팝콘','팝콘'],['수학여행','수학여행'],['엘리베이터','엘리베이터'],['눈사람','눈사람'],['이어폰','이어폰'],['줄넘기','줄넘기'],['자전거','자전거'],['도시락','도시락'],['숨바꼭질','숨바꼭질']],whisper:[['바나나 우유','바나나 우유'],['우주 최강 우리 반','우주 최강 우리 반'],['치즈가 쭉 늘어나요','치즈가 쭉 늘어나요'],['급식에 떡볶이 나왔다','급식에 떡볶이 나왔다'],['호랑이도 춤을 춘다','호랑이도 춤을 춘다'],['수박 먹는 펭귄','수박 먹는 펭귄'],['오늘의 주인공은 나야','오늘의 주인공은 나야'],['반짝반짝 작은 별','반짝반짝 작은 별']]};
+defaults.person[2]=['2010 밴쿠버 올림픽 피겨 스케이팅 여자 싱글 금메달리스트','김연아'];
+const KEY='class-play-day-v1',colors=['#7764e8','#ed9170','#56aca0','#e6bc53','#719fe4','#c47eba','#81878f','#d27586'];
+const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fresh=()=>({round:0,teams:Array.from({length:4},(_,i)=>({id:crypto.randomUUID(),name:`${i+1}팀`,scores:Array(8).fill(0)})),done:Array(8).fill(false),banks:structuredClone(defaults),positions:{}});
+let state=fresh(),storageOK=true;
+
+// Version 2 keeps tournament scores and legacy hand-edited quizzes.
+const validQuestions=q=>Array.isArray(q)&&q.length>0&&q.length<=100&&q.every(a=>Array.isArray(a)&&a.length===2&&a.every(s=>typeof s==='string'&&s.trim().length>0&&s.length<=200));
+state.packEdits=state.packEdits&&typeof state.packEdits==='object'&&!Array.isArray(state.packEdits)?state.packEdits:{};
+state.selectedPacks=state.selectedPacks&&typeof state.selectedPacks==='object'&&!Array.isArray(state.selectedPacks)?state.selectedPacks:{};
+state.packPositions=state.packPositions&&typeof state.packPositions==='object'&&!Array.isArray(state.packPositions)?state.packPositions:{};
+state.legacyPacks=state.legacyPacks&&typeof state.legacyPacks==='object'&&!Array.isArray(state.legacyPacks)?state.legacyPacks:{};
+for(const [id,qs] of Object.entries(state.packEdits)){if(!validQuestions(qs))delete state.packEdits[id]}
+if(state.collectionsVersion!==2){
+ for(const type of Object.keys(defaults)){
+  if(validQuestions(state.banks[type])&&JSON.stringify(state.banks[type])!==JSON.stringify(defaults[type])){
+   const id=type+'-legacy';state.legacyPacks[type]={id,title:'이전에 편집한 문제',questions:state.banks[type]};
+  }
+ }
+ state.collectionsVersion=2;
+}
+for(const [type,p] of Object.entries(state.legacyPacks)){if(!Object.keys(defaults).includes(type)||!p||p.id!==type+'-legacy'||!validQuestions(p.questions))delete state.legacyPacks[type]}
+state.mafiaCount=Number.isInteger(state.mafiaCount)&&state.mafiaCount>=8&&state.mafiaCount<=60?state.mafiaCount:30;
+const MAFIA_ROLES=['시민','마피아','경찰','의사'];
+state.mafiaRoster=Array.isArray(state.mafiaRoster)&&state.mafiaRoster.every(p=>p&&typeof p.name==='string'&&p.name.length<=30&&MAFIA_ROLES.includes(p.role))?state.mafiaRoster:[];
+state.packOrders=state.packOrders&&typeof state.packOrders==='object'&&!Array.isArray(state.packOrders)?state.packOrders:{};
+let teacherDraft=[];
+let mafiaPhase='ready';
+let revealed=false,remaining=games[state.round].time,running=false,deadline=0,interval=null,draftTeams=[],present=false;
+function persist(){queueSave()}
+function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';clearTimeout(toast.handle);toast.handle=setTimeout(()=>$('toast').style.display='none',2600)}
+function packsFor(type){return [...(QUIZ_PACKS[type]||[]),...(state.legacyPacks[type]?[state.legacyPacks[type]]:[])]}
+function activePack(){const type=games[state.round].quiz,all=packsFor(type);return all.find(p=>p.id===state.selectedPacks[type])||all[0]}
+function bank(){const p=activePack();if(!p)return [];let qs=state.packEdits[p.id]||p.questions;if(games[state.round].quiz==='whisper'){qs=qs.filter(q=>q.every(w=>/^[가-힣]{2,4}$/.test(w)));if(!qs.length)qs=QUIZ_PACKS.whisper[0].questions}qs=qs.map(q=>games[state.round].quiz==='initial'?[initials(q[1]).replace(/[^ㄱ-ㅎ]/g,''),q[1]]:q.map(w=>w.replaceAll('\u00b7',' ')));const order=state.packOrders[p.id];return Array.isArray(order)&&order.length===qs.length&&new Set(order).size===qs.length&&order.every(i=>Number.isInteger(i)&&i>=0&&i<qs.length)?order.map(i=>qs[i]):qs}
+function shuffledOrder(n,previous){const order=Array.from({length:n},(_,i)=>i);for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]]}const before=previous||Array.from({length:n},(_,i)=>i);if(n>1&&order.every((v,i)=>v===before[i]))[order[0],order[1]]=[order[1],order[0]];return order}
+function shufflePack(){if(!requireTeacher())return;const p=activePack();if(!p)return;const n=bank().length;if(n<2){toast('섞을 문제가 2개 이상 필요해요.');return}stopTimer();state.packOrders[p.id]=shuffledOrder(n,state.packOrders[p.id]);state.packPositions[p.id]=0;revealed=false;persist();renderStage();toast('문제 순서를 섞었어요. 첫 문제부터 시작해요.')}
+
+function position(){const p=activePack(),n=p?state.packPositions[p.id]:0;return Number.isInteger(n)?Math.max(0,Math.min(n,bank().length-1)):0}
+function selectPack(id){if(!requireTeacher())return;const type=games[state.round].quiz;if(!packsFor(type).some(p=>p.id===id))throw Error('이 경기의 모음집을 선택하세요.');stopTimer();state.selectedPacks[type]=id;revealed=false;persist();renderStage();renderCollections()}
+function renderCollections(){const type=games[state.round].quiz,p=activePack();$('collectionBar').hidden=!type;if(!p)return;$('packSelect').innerHTML=packsFor(type).map(x=>'<option value="'+esc(x.id)+'">'+esc(x.title)+(state.packEdits[x.id]?'   편집됨':'')+'</option>').join('');$('packSelect').value=p.id;$('packSummary').textContent='기본 10개 모음집   각 40문제 / 선택한 모음집 '+bank().length+'문제';$('questionJump').max=bank().length;$('questionJump').value=position()+1;$('restartPack').disabled=position()===0&&!revealed;$('restorePack').disabled=!state.packEdits[p.id]}
+function renderMafia(){const on=state.round===0;$('mafiaPanel').hidden=!on;$('roundScores').hidden=on;$('mafiaCount').value=state.mafiaCount;if(!on)return;const m=Math.max(2,Math.floor(state.mafiaCount/6));$('mafiaRoles').textContent='역할 배분 예시: 마피아 '+m+'명   경찰 1명   의사 1명   시민 '+(state.mafiaCount-m-2)+'명';if(state.mafiaRoster.length===state.mafiaCount){$('mafiaRoles').textContent='교사 배정 완료: '+MAFIA_ROLES.map(r=>r+' '+state.mafiaRoster.filter(p=>p.role===r).length+'명').join('   ')}$('mafiaScoreNote').textContent='반 전체 한 게임   조별 점수에 합산하지 않아요.';document.querySelectorAll('[data-mafia-phase]').forEach(b=>{b.classList.toggle('primary',b.dataset.mafiaPhase===mafiaPhase);b.setAttribute('aria-pressed',String(b.dataset.mafiaPhase===mafiaPhase))})}
+function selectMafiaPhase(phase){if(!requireTeacher())return;if(!['ready','night','day','vote'].includes(phase))return;mafiaPhase=phase;stopTimer();remaining=phase==='night'?60:phase==='vote'?30:180;$('duration').value=remaining;renderTime();renderStage();renderMafia()}
+
+function renderStage(){const g=games[state.round],b=bank(),p=position();$('quizActions').hidden=!g.quiz;$('quizActions').style.display=g.quiz?'flex':'none';$('stageLabel').textContent=g.quiz?(g.quiz==='speed'||g.quiz==='whisper'?'제시어   보여 줄 사람만 화면을 봐 주세요':g.quiz==='initial'?'초성을 보고 정답을 맞혀 보세요':'이 인물은 누구일까요?'):g.cue;const q=g.quiz?b[p][0]:g.headline;$('question').textContent=q;$('question').classList.toggle('long',q.length>18);$('answer').textContent=g.quiz?(revealed?b[p][1]:'정답을 생각해 보세요'):'함께할 준비 됐나요?';$('answer').classList.toggle('hidden',!!g.quiz&&!revealed);$('quizCount').textContent=g.quiz?activePack().title+'   '+(p+1)+' / '+b.length:'READY TO PLAY';$('revealBtn').textContent=revealed?'정답 숨기기':'정답 공개';$('revealBtn').hidden=g.quiz==='speed'||g.quiz==='whisper';$('prevQuestion').disabled=p===0;$('nextQuestion').disabled=p>=b.length-1;if(state.round===0){const phases={ready:['반 전체가 함께하는 마피아','역할 카드를 받고, 내 역할만 확인해요','조 구분 없이 한 게임으로 진행'],night:['밤이 되었습니다','모두 눈을 감아 주세요','진행자 안내에 따라 내 차례에만 눈을 떠요'],day:['아침이 되었습니다','밤의 결과를 듣고 토론해요','생존자끼리 차례대로 이야기해요'],vote:['투표 시간입니다','마피아로 의심되는 사람은?','생존자 1인 1표   동점이면 재투표']};const v=phases[mafiaPhase];$('question').textContent=v[0];$('question').classList.add('long');$('stageLabel').textContent=v[1];$('answer').textContent=v[2];$('quizCount').textContent=state.mafiaCount+'명 참여   진행자 별도'}renderCollections()}
+function renderRanks(){renderPublicRanks();const sorted=state.teams.map((t,i)=>({...t,color:colors[i],total:t.scores.reduce((a,b,i)=>a+(i===0?0:b),0)})).sort((a,b)=>b.total-a.total);$('rankings').innerHTML=sorted.map((t,i)=>{const rank=sorted.findIndex(x=>x.total===t.total)+1;return `<div class="rank ${rank===1?'first':''}"><span class="position">${rank}</span><i class="team-color" style="--team:${t.color}"></i><span class="team-name">${esc(t.name)}</span><strong>${t.total}<small>점</small></strong></div>`}).join('')}
+function renderScores(){ $('scoreInputs').innerHTML=state.teams.map((t,i)=>`<div class="score-item"><label for="score-${i}" style="color:${colors[i]}">${esc(t.name)}</label><button data-score="${i}" data-delta="-10" aria-label="${esc(t.name)} 10점 빼기">−</button><input id="score-${i}" type="number" min="-9999" max="9999" step="1" value="${t.scores[state.round]}" data-team="${i}" aria-label="${esc(t.name)} 이번 경기 점수"><button data-score="${i}" data-delta="10" aria-label="${esc(t.name)} 10점 더하기">+</button></div>`).join('')}
+function render(){const g=games[state.round];$('games').innerHTML=games.map((x,i)=>`<button class="game-button ${i===state.round?'active':''} ${state.done[i]?'finished':''}" data-round="${i}" ${i===state.round?'aria-current="step"':''}><span class="num">${state.done[i]?'✓':String(i+1).padStart(2,'0')}</span><span><b>${x.name}</b><small>${x.type}</small></span></button>`).join('');$('roundLabel').textContent=`ROUND ${String(state.round+1).padStart(2,'0')}`;$('gameTitle').textContent=g.name;$('gameMeta').textContent=`${g.people}   ${g.type}`;$('doneBtn').textContent=state.done[state.round]?'✓ 완료 취소':'경기 완료';$('doneBtn').classList.toggle('is-done',state.done[state.round]);$('rules').innerHTML=g.rules.map(x=>`<li>${x}</li>`).join('');$('supplies').textContent=g.supplies;const completed=state.done.filter(Boolean).length;$('progressLabel').textContent=`${completed} / 8 경기 완료`;$('progressBar').style.width=`${completed/8*100}%`;$('nextGame').textContent=state.round<7?games[state.round+1].name:'마지막 경기입니다';$('nextMeta').textContent=state.round<7?games[state.round+1].people:'경기 완료 후 종합 순위를 확인하세요.';$('nextRound').disabled=state.round===7;renderStage();renderScores();renderRanks();renderTime();renderMafia();updateAccess()}
+function selectRound(i){if(!requireTeacher())return;if(!Number.isInteger(i)||i<0||i>7)throw Error('경기는 1~8 사이여야 합니다.');stopTimer();state.round=i;remaining=games[i].time;$('duration').value=remaining;revealed=false;persist();render()}
+function changeScore(i,value){if(!requireTeacher())return;if(state.round===0)throw Error('마피아는 반 전체 경기이므로 조별 점수를 기록하지 않습니다.');if(!Number.isInteger(i)||!state.teams[i]||!Number.isInteger(value)||Math.abs(value)>9999)throw Error('점수는 -9999~9999 사이 정수로 입력하세요.');state.teams[i].scores[state.round]=value;persist();renderRanks()}
+function renderTime(){const sec=Math.max(0,remaining);$('timer').textContent=`${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}`;$('timer').classList.toggle('expired',sec===0);$('timerToggle').textContent=running?'일시 정지':sec===0?'다시 시작':'타이머 시작'}
+function stopTimer(){if(running)remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));running=false;clearInterval(interval);renderTime()}
+let audioCtx;
+function beep(kind='end'){
+ try{
+  audioCtx ||=new (window.AudioContext||window.webkitAudioContext)();
+  const play=()=>{const tones=kind==='start'?[660,880]:[880,740,880];const now=audioCtx.currentTime;
+   tones.forEach((hz,i)=>{const at=now+i*.24,osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.connect(gain);gain.connect(audioCtx.destination);osc.frequency.value=hz;gain.gain.setValueAtTime(.001,at);gain.gain.exponentialRampToValueAtTime(.18,at+.015);gain.gain.exponentialRampToValueAtTime(.001,at+.21);osc.start(at);osc.stop(at+.23)});
+  };
+  if(audioCtx.state==='running')play();else audioCtx.resume().then(play).catch(()=>{});
+ }catch{}
+}
+function toggleTimer(){if(!requireTeacher())return;if(running){stopTimer();return}beep('start');if(remaining<=0)remaining=Number($('duration').value);running=true;deadline=Date.now()+remaining*1000;$('timeAlert').textContent='';interval=setInterval(()=>{remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));if(!remaining){running=false;clearInterval(interval);beep();$('timeAlert').textContent='시간 종료';toast('시간 종료!')};renderTime()},150);renderTime()}
+function moveQuestion(delta){if(!requireTeacher())return;const n=position()+delta;if(n<0||n>=bank().length)return;state.packPositions[activePack().id]=n;revealed=false;persist();renderStage()}
+$('games').addEventListener('click',e=>{const b=e.target.closest('[data-round]');if(b)selectRound(Number(b.dataset.round))});$('nextRound').onclick=()=>selectRound(state.round+1);$('doneBtn').onclick=()=>{state.done[state.round]=!state.done[state.round];if(state.done[state.round])stopTimer();persist();render()};$('revealBtn').onclick=()=>{revealed=!revealed;renderStage()};$('prevQuestion').onclick=()=>moveQuestion(-1);$('nextQuestion').onclick=()=>moveQuestion(1);$('timerToggle').onclick=toggleTimer;$('timerReset').onclick=()=>{stopTimer();remaining=Number($('duration').value);renderTime()};$('duration').onchange=()=>{stopTimer();remaining=Number($('duration').value);renderTime()};
+$('scoreInputs').addEventListener('click',e=>{const b=e.target.closest('[data-score]');if(!b)return;const i=Number(b.dataset.score);try{changeScore(i,state.teams[i].scores[state.round]+Number(b.dataset.delta));renderScores()}catch(err){toast(err.message)}});$('scoreInputs').addEventListener('change',e=>{if(e.target.dataset.team===undefined)return;const i=Number(e.target.dataset.team);try{if(!e.target.value.trim())throw Error('점수를 입력하세요.');changeScore(i,Number(e.target.value))}catch(err){toast(err.message);renderScores()}});
+function renderTeamFields(){$('teamFields').innerHTML=draftTeams.map((t,i)=>`<div class="team-field"><input aria-label="${i+1}번째 팀 이름" data-name="${i}" value="${esc(t.name)}" maxlength="20" required><button type="button" data-remove="${i}" ${draftTeams.length<=2?'disabled':''}>삭제</button></div>`).join('');$('addTeam').disabled=draftTeams.length>=8}
+$('settingsBtn').onclick=()=>{draftTeams=structuredClone(state.teams);renderTeamFields();$('settings').showModal()};$('teamFields').addEventListener('input',e=>{if(e.target.dataset.name!==undefined)draftTeams[Number(e.target.dataset.name)].name=e.target.value});$('teamFields').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b||draftTeams.length<=2)return;const i=Number(b.dataset.remove);if(draftTeams[i].scores.some(Boolean)&&!confirm('이 팀을 삭제하면 모든 경기 점수도 삭제됩니다. 계속할까요?'))return;draftTeams.splice(i,1);renderTeamFields()});$('addTeam').onclick=()=>{if(draftTeams.length>=8)return;draftTeams.push({id:crypto.randomUUID(),name:`${draftTeams.length+1}팀`,scores:Array(8).fill(0)});renderTeamFields()};$('settingsForm').onsubmit=e=>{e.preventDefault();if(draftTeams.some(t=>!t.name.trim()))return toast('팀 이름을 입력하세요.');if(new Set(draftTeams.map(t=>t.name.trim())).size!==draftTeams.length)return toast('팀 이름을 서로 다르게 정해 주세요.');state.teams=draftTeams.map(t=>({...t,name:t.name.trim()}));persist();render();$('settings').close();toast('팀 설정을 저장했어요.')};
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>$(b.dataset.close).close());$('editQuiz').onclick=()=>{$('quizText').value=bank().map(q=>q.join(' | ')).join('\n');$('editError').textContent='';$('quizEditor').showModal()};$('quizForm').onsubmit=e=>{e.preventDefault();const lines=$('quizText').value.split('\n').filter(x=>x.trim());const parsed=lines.map(x=>x.split('|').map(v=>v.trim()));if(!parsed.length||parsed.length>100||parsed.some(q=>q.length!==2||q.some(x=>!x||x.length>200))){$('editError').textContent='문제 | 정답 형식으로 1~100문제를 입력하세요. 각 항목은 200자 이내입니다.';return}delete state.packOrders[activePack().id];state.packEdits[activePack().id]=parsed;state.packPositions[activePack().id]=0;revealed=false;persist();renderStage();$('quizEditor').close();toast('문제를 저장했어요.')};
+function setPresent(value){if(value)$('teacherRoles').close();present=value;document.body.classList.toggle('present',value);$('screenBtn').textContent=value?'진행 화면으로 돌아가기':'큰 화면 보기 ⛶'}
+$('screenBtn').onclick=async()=>{setPresent(!present);try{if(present)await document.documentElement.requestFullscreen();else if(document.fullscreenElement)await document.exitFullscreen()}catch{}};document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&present)setPresent(false)});document.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]')||['INPUT','TEXTAREA','SELECT','BUTTON'].includes(document.activeElement.tagName))return;if(e.key==='Escape'&&present)setPresent(false);if(!present)return;if(e.key==='ArrowRight')moveQuestion(1);if(e.key==='ArrowLeft')moveQuestion(-1);if(e.code==='Space'&&games[state.round].quiz){e.preventDefault();revealed=!revealed;renderStage()}});
+$('resetAll').onclick=()=>{if(!confirm('모든 팀의 점수와 경기 완료 기록을 초기화할까요? 팀 이름과 편집한 문제는 유지됩니다.'))return;stopTimer();state.teams.forEach(t=>t.scores=Array(8).fill(0));state.done=Array(8).fill(false);state.positions={};state.packPositions={};selectRound(0);toast('대회 기록을 초기화했어요.')};
+$('packSelect').onchange=e=>selectPack(e.target.value);
+$('questionJump').onchange=e=>{const n=Number(e.target.value);if(!Number.isInteger(n)||n<1||n>bank().length){toast('1~'+bank().length+' 사이 문제 번호를 입력하세요.');renderCollections();return}state.packPositions[activePack().id]=n-1;revealed=false;persist();renderStage()};
+$('shufflePack').onclick=shufflePack;
+$('restartPack').onclick=()=>{stopTimer();state.packPositions[activePack().id]=0;revealed=false;persist();renderStage()};
+$('restorePack').onclick=()=>{const p=activePack();if(!state.packEdits[p.id]||!confirm('선택한 모음집의 편집 내용을 지우고 원래 문제로 되돌릴까요?'))return;delete state.packOrders[p.id];delete state.packEdits[p.id];state.packPositions[p.id]=0;revealed=false;persist();renderStage()};
+$('mafiaCount').onchange=e=>{const n=Number(e.target.value);if(!Number.isInteger(n)||n<8||n>60){toast('참여 인원은 8~60명으로 입력하세요.');$('mafiaCount').value=state.mafiaCount;return}state.mafiaCount=n;persist();renderMafia();renderStage()};
+document.querySelectorAll('[data-mafia-phase]').forEach(b=>b.onclick=()=>selectMafiaPhase(b.dataset.mafiaPhase));
+
+function roleTally(list){return MAFIA_ROLES.map(r=>r+' '+list.filter(p=>p.role===r).length+'명').join('   ')}
+function teacherRows(){ $('teacherRows').innerHTML=teacherDraft.map((p,i)=>'<div class="teacher-row"><span>'+(i+1)+'번</span><input data-student="'+i+'" maxlength="30" aria-label="'+(i+1)+'번 학생 이름" value="'+esc(p.name)+'"><select data-role="'+i+'" aria-label="'+(i+1)+'번 학생 역할">'+MAFIA_ROLES.map(r=>'<option'+(p.role===r?' selected':'')+'>'+r+'</option>').join('')+'</select></div>').join('');$('teacherTally').textContent=roleTally(teacherDraft)}
+function saveTeacherRoster(){if(!requireTeacher())return;const mafia=teacherDraft.filter(p=>p.role==='마피아').length;if(teacherDraft.length!==state.mafiaCount)throw Error('참여 인원이 바뀌었습니다. 다시 열어 주세요.');if(mafia<1||mafia>=teacherDraft.length-mafia)throw Error('마피아는 1명 이상, 참여 인원의 절반 미만으로 배정해 주세요.');if(teacherDraft.some(p=>!p.name.trim()))throw Error('이름 또는 출석 번호를 입력해 주세요.');if(new Set(teacherDraft.map(p=>p.name.trim())).size!==teacherDraft.length)throw Error('동명이인은 번호를 붙여 구분해 주세요.');state.mafiaRoster=teacherDraft.map(p=>({name:p.name.trim(),role:p.role}));persist();renderMafia();$('teacherRoles').close();toast('교사 역할 배정을 저장했어요. 역할은 학생에게 개별로 알려 주세요.')}
+$('teacherRoleBtn').onclick=()=>{if(present)return;teacherDraft=Array.from({length:state.mafiaCount},(_,i)=>state.mafiaRoster[i]?{...state.mafiaRoster[i]}:{name:(i+1)+'번 학생',role:'시민'});$('teacherError').textContent='';teacherRows();$('teacherRoles').showModal()};
+$('teacherRows').addEventListener('input',e=>{if(e.target.dataset.student!==undefined)teacherDraft[Number(e.target.dataset.student)].name=e.target.value});
+$('teacherRows').addEventListener('change',e=>{if(e.target.dataset.role===undefined)return;const i=Number(e.target.dataset.role);if(teacherDraft[i]&&MAFIA_ROLES.includes(e.target.value)){teacherDraft[i].role=e.target.value;$('teacherTally').textContent=roleTally(teacherDraft)}});
+$('teacherForm').onsubmit=e=>{e.preventDefault();$('teacherError').textContent='';try{saveTeacherRoster()}catch(err){$('teacherError').textContent=err.message}};
+
+let teacherUnlocked=true,authBusy=false;
+function openTeacherAuth(){location.href='/'}
+function requireTeacher(){return teacherUnlocked}
+function updateAccess(){document.body.classList.remove('student-mode');$('teacherAccess').textContent='관리 화면 나가기';$('accessStatus').textContent='교사 진행 모드 · 학생 링크를 공유해 주세요'}
+$('teacherAccess').onclick=async()=>{await flushSave();await fetch('/api/logout',{method:'POST',headers:{'X-Playday':'1'}});location.href='/'};
+const protectedControls='#games button,#nextRound,#doneBtn,#revealBtn,#prevQuestion,#nextQuestion,#timerToggle,#timerReset,#duration,#scoreInputs button,#scoreInputs input,#settingsBtn,#settingsForm,#editQuiz,#quizForm,#resetAll,#packSelect,#questionJump,#shufflePack,#restartPack,#restorePack,#mafiaCount,[data-mafia-phase],#teacherRoleBtn,#teacherForm';
+for(const type of ['click','change','input','submit'])document.addEventListener(type,e=>{if(!teacherUnlocked&&e.target.closest(protectedControls)){e.preventDefault();e.stopImmediatePropagation();openTeacherAuth()}},true);
+document.addEventListener('keydown',e=>{if(!teacherUnlocked&&!document.querySelector('dialog[open]')&&['ArrowRight','ArrowLeft','Space'].includes(e.code)){e.preventDefault();e.stopImmediatePropagation()}},true);
+function renderPublicRanks(){const sorted=state.teams.map(t=>({...t,total:t.scores.slice(1).reduce((a,b)=>a+b,0)})).sort((a,b)=>b.total-a.total);$('publicRankings').innerHTML=sorted.map(t=>{const rank=sorted.findIndex(x=>x.total===t.total)+1;return `<div class="public-rank ${rank===1?'winner':''}"><span>${rank}위</span><b>${esc(t.name)}</b><strong>${t.total}<small>점</small></strong></div>`}).join('');$('rankHead').innerHTML='<tr><th scope="col">팀</th>'+games.slice(1).map(g=>'<th scope="col">'+esc(g.name)+'</th>').join('')+'<th scope="col">합계</th></tr>';$('rankBody').innerHTML=sorted.map(t=>'<tr><th scope="row">'+esc(t.name)+'</th>'+t.scores.slice(1).map(v=>'<td>'+v+'</td>').join('')+'<td><strong>'+t.total+'</strong></td></tr>').join('')}
+function setView(ranks){$('gameView').hidden=ranks;$('studentRanks').hidden=!ranks;$('scheduleTab').setAttribute('aria-selected',String(!ranks));$('rankTab').setAttribute('aria-selected',String(ranks));renderPublicRanks()}
+$('scheduleTab').onclick=()=>setView(false);$('rankTab').onclick=()=>setView(true);
+for(const id of ['scheduleTab','rankTab'])$(id).addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const ranks=id==='scheduleTab';setView(ranks);$(ranks?'rankTab':'scheduleTab').focus()}});
+
+$('duration').value=remaining;render();
+if(document.modelContext?.registerTool){for(const tool of [{name:'read_tournament',description:'현재 경기, 팀별 총점과 완료 기록을 조회합니다.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:()=>({round:state.round+1,game:games[state.round].name,teams:state.teams.map(t=>({name:t.name,total:t.scores.reduce((a,b,i)=>a+(i===0?0:b),0)})),done:state.done})},{name:'select_round',description:'1~8 사이 경기를 선택합니다. 현재 타이머는 멈추고 새 경기 제한 시간으로 초기화됩니다.',inputSchema:{type:'object',properties:{round:{type:'integer',minimum:1,maximum:8}},required:['round'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>{if(!teacherUnlocked)throw Error('교사 관리이 필요합니다.');if(!input||!Number.isInteger(input.round))throw Error('round는 정수여야 합니다.');selectRound(input.round-1);return {round:state.round+1,game:games[state.round].name}}}]){try{Promise.resolve(document.modelContext.registerTool(tool)).catch(()=>{})}catch{}}}
+</script><script src="/teacher-sync.js"></script></body></html>

@@ -1,0 +1,3 @@
+// Fragment is never sent in the URL to the web server or Supabase.
+const token=location.hash.slice(1);history.replaceState(null,'','/manage');
+(async()=>{const message=document.getElementById('message');if(!token){message.textContent='교사 관리 링크가 필요해요.';document.getElementById('help').hidden=false;return}try{const r=await fetch('/api/access',{method:'POST',headers:{'Content-Type':'application/json','X-Playday':'1'},body:JSON.stringify({token})});const b=await r.json();if(!r.ok)throw Error(b.error);location.replace('/teacher')}catch(e){message.textContent=e.message==='Failed to fetch'?'서버에 연결하지 못했어요.':e.message;document.getElementById('help').hidden=false}})();
